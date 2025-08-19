@@ -16,7 +16,7 @@ urlpatterns = [
     path("",include('dwrg.urls')),
     path("", include('teacher.urls')),
     path("", include('homepage_app.urls')),
-
+    path("",include('tools.urls')),
 ]
 
 

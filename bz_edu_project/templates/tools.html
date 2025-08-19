@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>工具管理</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .add-form {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: transform 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .tools-list {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .tools-header {
+            background: #f8f9fa;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .tools-header h2 {
+            color: #333;
+            font-size: 1.5em;
+        }
+        
+        .tool-item {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.3s;
+        }
+        
+        .tool-item:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .tool-item:last-child {
+            border-bottom: none;
+        }
+        
+        .tool-name {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        
+        .tool-url {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+        
+        .tool-url:hover {
+            text-decoration: underline;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+        }
+        
+        .empty-state i {
+            font-size: 4em;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+        
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            display: none;
+        }
+        
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .alert-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .tool-actions {
+            margin-top: 10px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn-small {
+            padding: 6px 12px;
+            font-size: 12px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-edit {
+            background-color: #28a745;
+            color: white;
+        }
+        
+        .btn-edit:hover {
+            background-color: #218838;
+        }
+        
+        .btn-delete {
+            background-color: #dc3545;
+            color: white;
+        }
+        
+        .btn-delete:hover {
+            background-color: #c82333;
+        }
+        
+        .btn-copy {
+            background-color: #6c757d;
+            color: white;
+        }
+        
+        .btn-copy:hover {
+            background-color: #5a6268;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 500px;
+            position: relative;
+        }
+        
+        .close {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #aaa;
+        }
+        
+        .close:hover {
+            color: #000;
+        }
+        
+        .tool-item-enhanced {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        
+        .tool-item-enhanced:hover {
+            background-color: #f8f9fa;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .tool-item-enhanced:last-child {
+            border-bottom: none;
+        }
+        
+        .tool-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+        
+        .tool-info {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .tool-id {
+            font-size: 0.8em;
+            color: #6c757d;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛠️ 工具管理系统</h1>
+            <p>管理和访问您的常用工具链接</p>
+        </div>
+        
+        <!-- 添加工具表单 -->
+        <div class="add-form">
+            <h2 style="margin-bottom: 20px; color: #333;">添加新工具</h2>
+            <div class="alert alert-success" id="successAlert">
+                工具添加成功！
+            </div>
+            <div class="alert alert-error" id="errorAlert">
+                添加失败，请检查输入信息！
+            </div>
+            <form id="addToolForm">
+                <div class="form-group">
+                    <label for="toolName">工具名称：</label>
+                    <input type="text" id="toolName" name="name" placeholder="请输入工具名称" required>
+                </div>
+                <div class="form-group">
+                    <label for="toolUrl">工具链接：</label>
+                    <input type="url" id="toolUrl" name="uurl" placeholder="请输入工具链接（如：https://www.example.com）" required>
+                </div>
+                <button type="submit" class="btn">➕ 添加工具</button>
+            </form>
+        </div>
+        
+        <!-- 工具列表 -->
+        <div class="tools-list">
+            <div class="tools-header">
+                <h2>📋 工具列表</h2>
+            </div>
+            <div id="toolsList">
+                {% if tools %}
+                    {% for tool in tools %}
+                    <div class="tool-item-enhanced" data-id="{{ tool.id }}">
+                        <div class="tool-meta">
+                            <div class="tool-info">
+                                <div class="tool-id">#{{ tool.id }}</div>
+                                <div class="tool-name">{{ tool.name }}</div>
+                                <a href="{{ tool.uurl }}" target="_blank" class="tool-url">🔗 {{ tool.uurl }}</a>
+                            </div>
+                        </div>
+                        <div class="tool-actions">
+                            <button class="btn-small btn-copy" onclick="copyLink('{{ tool.uurl }}')">
+                                📋 复制链接
+                            </button>
+                            <button class="btn-small btn-edit" onclick="editTool({{ tool.id }}, '{{ tool.name }}', '{{ tool.uurl }}')">
+                                ✏️ 编辑
+                            </button>
+                            <button class="btn-small btn-delete" onclick="deleteTool({{ tool.id }}, '{{ tool.name }}')">
+                                🗑️ 删除
+                            </button>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="empty-state">
+                        <div style="font-size: 4em; margin-bottom: 20px; opacity: 0.3;">📝</div>
+                        <h3>暂无工具</h3>
+                        <p>添加您的第一个工具开始使用吧！</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- 编辑工具模态框 -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 style="margin-bottom: 20px; color: #333;">编辑工具</h2>
+            <div class="alert alert-success" id="editSuccessAlert">
+                工具更新成功！
+            </div>
+            <div class="alert alert-error" id="editErrorAlert">
+                更新失败，请检查输入信息！
+            </div>
+            <form id="editToolForm">
+                <input type="hidden" id="editToolId">
+                <div class="form-group">
+                    <label for="editToolName">工具名称：</label>
+                    <input type="text" id="editToolName" name="name" placeholder="请输入工具名称" required>
+                </div>
+                <div class="form-group">
+                    <label for="editToolUrl">工具链接：</label>
+                    <input type="url" id="editToolUrl" name="uurl" placeholder="请输入工具链接" required>
+                </div>
+                <div style="text-align: right; margin-top: 20px;">
+                    <button type="button" class="btn" style="background: #6c757d; margin-right: 10px;" onclick="closeEditModal()">
+                        取消
+                    </button>
+                    <button type="submit" class="btn">
+                        💾 保存更改
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 删除确认模态框 -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 style="margin-bottom: 20px; color: #333;">确认删除</h2>
+            <p id="deleteMessage" style="margin-bottom: 30px; font-size: 16px;"></p>
+            <div style="text-align: right;">
+                <button type="button" class="btn" style="background: #6c757d; margin-right: 10px;" onclick="closeDeleteModal()">
+                    取消
+                </button>
+                <button type="button" class="btn" style="background: #dc3545;" onclick="confirmDelete()">
+                    🗑️ 确认删除
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('addToolForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = {
+                name: formData.get('name'),
+                uurl: formData.get('uurl')
+            };
+            
+            // 添加协议前缀如果没有的话
+            if (data.uurl && !data.uurl.startsWith('http://') && !data.uurl.startsWith('https://')) {
+                data.uurl = 'https://' + data.uurl;
+            }
+            
+            try {
+                const response = await fetch('/tools/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCookie('csrftoken')
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                if (response.ok) {
+                    // 显示成功消息
+                    document.getElementById('successAlert').style.display = 'block';
+                    document.getElementById('errorAlert').style.display = 'none';
+                    
+                    // 清空表单
+                    this.reset();
+                    
+                    // 3秒后刷新页面
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1500);
+                } else {
+                    throw new Error('添加失败');
+                }
+            } catch (error) {
+                document.getElementById('errorAlert').style.display = 'block';
+                document.getElementById('successAlert').style.display = 'none';
+            }
+        });
+        
+        // 获取CSRF token的函数
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        // 编辑工具功能
+        function editTool(id, name, url) {
+            document.getElementById('editToolId').value = id;
+            document.getElementById('editToolName').value = name;
+            document.getElementById('editToolUrl').value = url;
+            document.getElementById('editModal').style.display = 'block';
+            document.getElementById('editSuccessAlert').style.display = 'none';
+            document.getElementById('editErrorAlert').style.display = 'none';
+        }
+
+        // 关闭编辑模态框
+        function closeEditModal() {
+            document.getElementById('editModal').style.display = 'none';
+        }
+
+        // 删除工具功能
+        let deleteToolId = null;
+        function deleteTool(id, name) {
+            deleteToolId = id;
+            document.getElementById('deleteMessage').textContent = `确定要删除工具 "${name}" 吗？此操作不可撤销。`;
+            document.getElementById('deleteModal').style.display = 'block';
+        }
+
+        // 关闭删除模态框
+        function closeDeleteModal() {
+            document.getElementById('deleteModal').style.display = 'none';
+            deleteToolId = null;
+        }
+
+        // 确认删除
+        async function confirmDelete() {
+            if (!deleteToolId) return;
+            
+            try {
+                const response = await fetch(`/tools/${deleteToolId}/`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCookie('csrftoken')
+                    }
+                });
+                
+                if (response.ok) {
+                    closeDeleteModal();
+                    // 移除DOM元素
+                    const toolElement = document.querySelector(`[data-id="${deleteToolId}"]`);
+                    if (toolElement) {
+                        toolElement.style.transform = 'translateX(-100%)';
+                        toolElement.style.opacity = '0';
+                        setTimeout(() => {
+                            toolElement.remove();
+                            // 检查是否没有工具了
+                            const toolsList = document.getElementById('toolsList');
+                            if (toolsList.children.length === 0) {
+                                toolsList.innerHTML = `
+                                    <div class="empty-state">
+                                        <div style="font-size: 4em; margin-bottom: 20px; opacity: 0.3;">📝</div>
+                                        <h3>暂无工具</h3>
+                                        <p>添加您的第一个工具开始使用吧！</p>
+                                    </div>
+                                `;
+                            }
+                        }, 300);
+                    }
+                    showNotification('工具删除成功！', 'success');
+                } else {
+                    throw new Error('删除失败');
+                }
+            } catch (error) {
+                showNotification('删除失败，请重试！', 'error');
+            }
+        }
+
+        // 复制链接功能
+        async function copyLink(url) {
+            try {
+                await navigator.clipboard.writeText(url);
+                showNotification('链接已复制到剪贴板！', 'success');
+            } catch (err) {
+                // 如果clipboard API不支持，使用传统方法
+                const textArea = document.createElement('textarea');
+                textArea.value = url;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showNotification('链接已复制到剪贴板！', 'success');
+            }
+        }
+
+        // 显示通知
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.className = `alert alert-${type === 'success' ? 'success' : 'error'}`;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 2000;
+                min-width: 250px;
+                display: block;
+                animation: slideIn 0.3s ease;
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        // 编辑表单提交
+        document.getElementById('editToolForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const toolId = document.getElementById('editToolId').value;
+            const formData = new FormData(this);
+            const data = {
+                name: formData.get('name'),
+                uurl: formData.get('uurl')
+            };
+            
+            // 添加协议前缀如果没有的话
+            if (data.uurl && !data.uurl.startsWith('http://') && !data.uurl.startsWith('https://')) {
+                data.uurl = 'https://' + data.uurl;
+            }
+            
+            try {
+                const response = await fetch(`/tools/${toolId}/`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCookie('csrftoken')
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                if (response.ok) {
+                    document.getElementById('editSuccessAlert').style.display = 'block';
+                    document.getElementById('editErrorAlert').style.display = 'none';
+                    
+                    // 更新页面上的工具信息
+                    const toolElement = document.querySelector(`[data-id="${toolId}"]`);
+                    if (toolElement) {
+                        toolElement.querySelector('.tool-name').textContent = data.name;
+                        const linkElement = toolElement.querySelector('.tool-url');
+                        linkElement.href = data.uurl;
+                        linkElement.textContent = `🔗 ${data.uurl}`;
+                        
+                        // 更新按钮的onclick属性
+                        const editBtn = toolElement.querySelector('.btn-edit');
+                        const deleteBtn = toolElement.querySelector('.btn-delete');
+                        const copyBtn = toolElement.querySelector('.btn-copy');
+                        
+                        editBtn.onclick = () => editTool(toolId, data.name, data.uurl);
+                        deleteBtn.onclick = () => deleteTool(toolId, data.name);
+                        copyBtn.onclick = () => copyLink(data.uurl);
+                    }
+                    
+                    setTimeout(() => {
+                        closeEditModal();
+                        showNotification('工具更新成功！', 'success');
+                    }, 1000);
+                } else {
+                    throw new Error('更新失败');
+                }
+            } catch (error) {
+                document.getElementById('editErrorAlert').style.display = 'block';
+                document.getElementById('editSuccessAlert').style.display = 'none';
+            }
+        });
+
+        // 模态框点击外部关闭
+        window.onclick = function(event) {
+            const editModal = document.getElementById('editModal');
+            const deleteModal = document.getElementById('deleteModal');
+            
+            if (event.target === editModal) {
+                closeEditModal();
+            }
+            if (event.target === deleteModal) {
+                closeDeleteModal();
+            }
+        };
+
+        // 关闭按钮事件
+        document.querySelectorAll('.close').forEach(closeBtn => {
+            closeBtn.onclick = function() {
+                closeEditModal();
+                closeDeleteModal();
+            };
+        });
+
+        // 添加CSS动画
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+            .tool-item-enhanced {
+                transition: all 0.3s ease;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

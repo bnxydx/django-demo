@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "dwrg",
     "teacher",
     "homepage_app",
+    "tools",
 ]
 
 MIDDLEWARE = [
