@@ -1,0 +1,25 @@
+### 测试获取所有学生
+GET http://localhost:8000/api/students/
+
+### 测试增加一个学生
+POST http://localhost:8000/api/students/
+
+{
+   "name":"SQL",
+   "age":10,
+   "sex":1
+}
+
+
+### 测试获取单个学生
+GET http://localhost:8000/api/student/5/
+
+### 修改
+PUT http://localhost:8000/api/student/3/
+
+{
+   "name":"html",
+   "age":23
+
+
+}

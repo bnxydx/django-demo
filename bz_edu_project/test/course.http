@@ -1,0 +1,13 @@
+### 获取课程分类列表
+GET http://localhost:8000/api/courses/
+
+### 获取课程分类列表
+GET http://bnxydx.natapp1.cc/api/courses/
+
+### 分页
+GET http://localhost:8000/api/courses/?page=3&size=3
+### 获取课程阶段信息
+GET http://localhost:8000/api/stages/?course=1
+
+### 获取单个课程阶段信息
+GET http://localhost:8000/api/stages/27/

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django测试项目 - 首页</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            margin: 0;
+        }
+        nav {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav li {
+            margin: 0 15px;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: #e9ecef;
+        }
+        .content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .feature {
+            margin-bottom: 30px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>欢迎访问Django测试项目</h1>
+        <p>这是一个简单的Django项目首页示例</p>
+    </header>
+    <button onclick="window.location.href='/'">返回首页</button>
+
+    <nav>
+        <ul>
+            <li><a href="/admin/" target="_blank">后台管理</a></li>
+            <li><a href="/login/">用户登录</a></li>
+            <!-- <li><a href="/getuser/1/">获取用户信息</a></li> -->
+            <!-- <li><a href="/request/">请求测试</a></li> -->
+            <li><a href="/upload/">图片上传</a></li>
+            <!-- <li><a href="/api/">API接口</a></li> -->
+            <!-- <li><a href="/">首页</a></li> -->
+            <li><a href="/yolo/">yolo</a></li>
+            
+        </ul>
+    </nav>
+    
+    <div class="content">
+        <div class="feature">
+            <h2>项目功能</h2>
+            <p>这个项目包含以下功能：</p>
+            <ul>
+                <li>用户登录 - <a href="/login/">点击访问</a></li>
+                <li>获取用户信息 - <a href="/getuser/1/">示例</a></li>
+                <li>自定义404页面</li>
+            </ul>
+        </div>
+        
+        <div class="feature">
+            <h2>API端点</h2>
+            <p>可用的API端点：</p>
+            <ul>
+                <li><code>/login/</code> - 用户登录表单</li>
+                <li><code>/getuser/&lt;id&gt;/</code> - 获取指定ID的用户信息</li>
+                <li><code>/admin/</code> - Django管理界面</li>
+            </ul>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2023 Django测试项目. 保留所有权利.</p>
+    </footer>
+</body>
+</html>

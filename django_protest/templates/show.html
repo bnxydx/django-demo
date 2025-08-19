@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文件展示</title>
+  <style>
+
+    body { font-family: 'Microsoft YaHei', sans-serif; background: #f5f5f5; }
+    ul { background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); padding: 30px; max-width: 600px; margin: 40px auto; }
+    li { margin-bottom: 15px; font-size: 16px; }
+    img { max-width: 100%; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+  </style>
+</head>
+<body>
+    <button onclick="window.location.href='/'">返回首页</button>
+
+  <ul>
+
+    <li>文件名：{{upload.file.name}}</li>
+    <li>文件地址：{{upload.file.url}}</li>
+    <li>图片名：{{upload.img.name}}</li>
+    <li>图片地址：{{upload.img.url}}</li>
+    <li><img src="{{upload.img.url}}" alt=""></li>
+    <li>说明：{{upload.desc}}</li>
+  </ul>
+</body>
+</html>

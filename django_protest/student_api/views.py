@@ -1,0 +1,57 @@
+from django.shortcuts import render
+from .models import Student
+from .serializers import StudentSerializer
+from django.http import JsonResponse,HttpResponse
+from rest_framework.parsers import JSONParser
+from django.views.decorators.csrf import csrf_exempt
+'''
+对学生执行 增删改查API：
+   行为       请求方式   请求路径URL
+   增加       POST     /students/
+   删除       DELETE    /student/<int:id>/
+   修改       PUT     /student/<int:id>/
+   查询一个     GET     /student/<int:id>/
+   查询所有     GET     /students/
+'''
+@csrf_exempt
+# Create your views here.
+def students(request):
+    if request.method == 'GET':
+        # 查询所有
+        stus = Student.objects.all()
+        serializer = StudentSerializer(stus,many=True)
+
+        return JsonResponse(serializer.data,safe=False)
+
+    elif request.method == 'POST':
+        data = JSONParser().parse(request)
+        ser = StudentSerializer(data=data)
+        if ser.is_valid():
+            ser.save()
+            return JsonResponse(ser.data,status=201)
+        else:
+            return JsonResponse(ser.errors,status=400)
+
+
+@csrf_exempt
+def student(request,id):
+    try:
+        stu = Student.objects.get(pk=id)
+    except Student.DoesNotExist:
+        return JsonResponse({'error': '学生不存在'}, status=404)
+
+    if request.method == 'GET':
+        ser = StudentSerializer(stu)
+        return JsonResponse(ser.data)
+    elif request.method == 'PUT':
+        # 修改
+        data = JSONParser().parse(request)
+        ser = StudentSerializer(stu,data=data)
+        if ser.is_valid():
+            ser.save()
+            return JsonResponse(ser.data,status=200)
+        else:
+            return JsonResponse(ser.errors,status=400)
+    elif request.method == 'DELETE':
+        stu.delete()
+        return HttpResponse(status=204)

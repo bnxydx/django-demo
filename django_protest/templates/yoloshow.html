@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOLO 检测结果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            background: #667eea;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        main {
+            padding: 30px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #4a5568;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+
+        .result-img {
+            max-width: 100%;
+            max-height: 600px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            display: block;
+        }
+
+        .no-result {
+            color: #718096;
+            font-size: 18px;
+            margin: 60px 0;
+        }
+
+        .actions {
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #5a67d8;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #a0aec0;
+            font-size: 14px;
+            background: #f7fafc;
+        }
+
+        /* 调试信息（可选，上线时可隐藏） */
+        .debug {
+            font-size: 12px;
+            color: #718096;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>YOLO 目标检测结果</h1>
+        </header>
+
+        <main>
+            {% if predicted_image_url %}
+                <h2>检测完成 ✅</h2>
+                <img src="{{ predicted_image_url }}" alt="YOLO Prediction Result" class="result-img">
+
+                <!-- 可选：显示调试路径 -->
+                <!-- <div class="debug">路径: {{ predicted_image_url }}</div> -->
+
+                <div class="actions">
+                    <a href="/yolo/" class="btn">返回上传</a>
+                </div>
+            {% else %}
+                <p class="no-result">❌ 未找到预测图像，请重新上传图片</p>
+                <div class="actions">
+                    <a href="/yolo/" class="btn">重新上传</a>
+                </div>
+            {% endif %}
+        </main>
+
+        <footer>
+            Powered by YOLOv8 + Django
+        </footer>
+    </div>
+
+</body>
+</html>

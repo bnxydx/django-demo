@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <button onclick="window.location.href='/'">返回首页</button>
+
+  <h2>这个测试</h2>
+  <form action="/upload_file/" method="post" enctype="multipart/form-data">
+     {% csrf_token %}
+    需要上传的文件<input type="file" name="file"><br>
+    需要上传的图片<input type="file" name="img"><br>
+    需要上传的备注<input type="text" name="desc"><br>
+    上传：<input type="submit" value="上传">
+  </form>
+  
+</body>
+</html>

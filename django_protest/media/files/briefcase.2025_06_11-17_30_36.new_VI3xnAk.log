@@ -1,0 +1,538 @@
+Date/Time:       2025-06-11 17:30:38 
+Command line:    C:\Users\Lenovo\venv\Scripts\briefcase new
+
+OS Release:      Windows 10
+OS Version:      10.0.22631
+Architecture:    AMD64
+Platform:        Windows-10-10.0.22631-SP0
+
+Python exe:      C:\Users\Lenovo\venv\Scripts\python.exe
+Python version:  3.11.3 (tags/v3.11.3:f3909b8, Apr  4 2023, 23:49:59) [MSC v.1934 64 bit (AMD64)]
+Virtual env:     True
+Conda env:       False
+
+Briefcase:       0.3.23
+Target platform: all
+Target format:   None
+
+Environment Variables:
+	ALLUSERSPROFILE=C:\ProgramData
+	APPCODE_VM_OPTIONS=C:\jetbra_\vmoptions\appcode.vmoptions
+	APPDATA=C:\Users\Lenovo\AppData\Roaming
+	CLASSPATH=F:\LINGO64_18\Lingo18.jar
+	CLION=D:\clion\CLion 2023.3.2\bin;
+	CLION_VM_OPTIONS=C:\jetbra_\vmoptions\clion.vmoptions
+	COMMONPROGRAMFILES=C:\Program Files\Common Files
+	COMMONPROGRAMFILES(X86)=C:\Program Files (x86)\Common Files
+	COMMONPROGRAMW6432=C:\Program Files\Common Files
+	COMPUTERNAME=DESKTOP-Q20A2OI
+	COMSPEC=C:\Windows\system32\cmd.exe
+	CONDA_DEFAULT_ENV=base
+	CONDA_EXE=F:\anaconda\anaconda_new\Scripts\conda.exe
+	CONDA_PREFIX=F:\anaconda\anaconda_new
+	CONDA_PROMPT_MODIFIER=(base) 
+	CONDA_PYTHON_EXE=F:\anaconda\anaconda_new\python.exe
+	CONDA_SHLVL=1
+	CPOLAR_HOME=F:\cpolar\
+	DATAGRIP=F:\datagrip\DataGrip 2024.1.5\bin;
+	DATAGRIP_VM_OPTIONS=C:\jetbra_\vmoptions\datagrip.vmoptions
+	DATASPELL_VM_OPTIONS=C:\jetbra_\vmoptions\dataspell.vmoptions
+	DEVECOSTUDIO_VM_OPTIONS=C:\jetbra_\vmoptions\devecostudio.vmoptions
+	DRIVERDATA=C:\Windows\System32\Drivers\DriverData
+	EFC_66988=1
+	FIG_JETBRAINS_SHELL_INTEGRATION=1
+	FPS_BROWSER_APP_PROFILE_STRING=Internet Explorer
+	FPS_BROWSER_USER_PROFILE_STRING=Default
+	GATEWAY_VM_OPTIONS=C:\jetbra_\vmoptions\gateway.vmoptions
+	GOLAND_VM_OPTIONS=C:\jetbra_\vmoptions\goland.vmoptions
+	HOMEDRIVE=C:
+	HOMEPATH=\Users\Lenovo
+	IDEA_INITIAL_DIRECTORY=C:\Users\Lenovo\Desktop
+	IDEA_VM_OPTIONS=C:\jetbra_\vmoptions\idea.vmoptions
+	IGCCSVC_DB=AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAUdXu1RAVl02a8lpk01++LQQAAAACAAAAAAAQZgAAAAEAACAAAABwpBntdCEP2qLIpH6L9TR863zSDqY+l2dTzZb5dFHktQAAAAAOgAAAAAIAACAAAACBxi6UKOFpsRnxFUELQ8o73yv7jAV+d0CS/fN9RP4kjmAAAACwh8PKIdYvk3RcsqQ2VCqUVEj/KM/oPsmbgqo8Y+rx5pxpvvVNt1A9RmAksaqPkVNfwkx5VkN75/8iZRqqGV+IYCRG8/5fV3xjvipE1mr+eq2dzuVXSUWPi272fZ3cCQpAAAAAiZgYSQYbz7pAxdgToIpS2dReBCAd8Dwly6U+hfAeAQYtqjbsejJdgnA0xtZo/Vu2JfVvs9LglrBlHFKUrlul7g==
+	INTELLIJ IDEA=D:\java_idle\IntelliJ IDEA 2024.1.3\bin;
+	JAVA_HOME=F:\jdk
+	JETBRAINSCLIENT_VM_OPTIONS=C:\jetbra_\vmoptions\jetbrainsclient.vmoptions
+	JETBRAINS_CLIENT_VM_OPTIONS=C:\jetbra_\vmoptions\jetbrains_client.vmoptions
+	LINGO64_18_HOME=F:\LINGO64_18\
+	LOCALAPPDATA=C:\Users\Lenovo\AppData\Local
+	LOGONSERVER=\\DESKTOP-Q20A2OI
+	MAVEN_HOME=F:\maven_3.9\apache-maven-3.9.5-bin
+	NUMBER_OF_PROCESSORS=16
+	ONEDRIVE=C:\Users\Lenovo\OneDrive
+	OPENSSL_IA32CAP=~0x200000200000000
+	OS=Windows_NT
+	PATH=C:\Users\Lenovo\venv/Scripts;F:\anaconda\anaconda_new;F:\anaconda\anaconda_new\Library\mingw-w64\bin;F:\anaconda\anaconda_new\Library\usr\bin;F:\anaconda\anaconda_new\Library\bin;F:\anaconda\anaconda_new\Scripts;F:\anaconda\anaconda_new\bin;F:\anaconda\anaconda_new\condabin;C:\Program Files\Common Files\Oracle\Java\javapath;F:\jdk\bin;D:\Git\cmd;D:\xshell_;D:\jdk_java\bin;D:\java_\bin;C:\Users\Lenovo\AppData\Local\Yarn\bin;D:\node.js;C:\Program Files\MySQL\MySQL Server 5.7\bin;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\VMware workstation Pro\bin;D:\python;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;D:\matlib\runtime\win64;D:\matlib\bin;E:\texlive_\texlive\2024\bin\windows;E:\texlive_\texlive\2024\bin;D:\java_;D:\xftp;C:\Windows\System32\convert.exe;F:\Tesseract\tesseract.exe;F:\maven_3.9\apache-maven-3.9.5-bin\bin;F:\maven_3.9\apache-maven-3.9.5-bin\apache-maven-3.9.5\bin;F:\anaconda\anaconda_new;F:\anaconda\anaconda_new\Scripts;F:\anaconda\anaconda_new\Library\bin;.;F:\vivo\pcsuite;F:\LINGO64_18;f:\Trae\bin;F:\python3.10\Scripts;F:\python3.10;D:\新建文件夹 (3)\Scripts;D:\新建文件夹 (3);D:\python\Scripts;D:\python;C:\Users\Lenovo\AppData\Local\Microsoft\WindowsApps;C:\Users\Lenovo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Lenovo\AppData\Roaming\npm;D:\fiddler;D:\clion\CLion 2023.3.2\bin;.;D:\qq脫脦脧路\QQGame\Hall.58139;.;D:\java_idle\IntelliJ IDEA 2024.1.3\bin;.;C:\Users\Lenovo\AppData\Local\Programs\Ollama;F:\cpolar;F:\datagrip\DataGrip 2024.1.5\bin;.;F:\pycharm_commituty\PyCharm Community Edition 2025.1\bin;.
+	PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL
+	PHPSTORM_VM_OPTIONS=C:\jetbra_\vmoptions\phpstorm.vmoptions
+	PROCESSOR_ARCHITECTURE=AMD64
+	PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 154 Stepping 3, GenuineIntel
+	PROCESSOR_LEVEL=6
+	PROCESSOR_REVISION=9a03
+	PROGRAMDATA=C:\ProgramData
+	PROGRAMFILES=C:\Program Files
+	PROGRAMFILES(X86)=F:\Program Files
+	PROGRAMW6432=C:\Program Files
+	PSEXECUTIONPOLICYPREFERENCE=RemoteSigned
+	PSMODULEPATH=C:\Users\Lenovo\Documents\WindowsPowerShell\Modules;C:\Program Files\WindowsPowerShell\Modules;C:\Windows\system32\WindowsPowerShell\v1.0\Modules
+	PUBLIC=C:\Users\Public
+	PYCHARM COMMUNITY EDITION=F:\pycharm_commituty\PyCharm Community Edition 2025.1\bin;
+	PYCHARM_VM_OPTIONS=C:\jetbra_\vmoptions\pycharm.vmoptions
+	RIDER_VM_OPTIONS=C:\jetbra_\vmoptions\rider.vmoptions
+	RUBYMINE_VM_OPTIONS=C:\jetbra_\vmoptions\rubymine.vmoptions
+	SESSIONNAME=Console
+	STUDIO_VM_OPTIONS=C:\jetbra_\vmoptions\studio.vmoptions
+	SYSTEMDRIVE=C:
+	SYSTEMROOT=C:\Windows
+	TEMP=C:\Users\Lenovo\AppData\Local\Temp
+	TERMINAL_EMULATOR=JetBrains-JediTerm
+	TERM_SESSION_ID=a832ad56-4a70-4f99-9ece-3a79b392f9ff
+	TMP=C:\Users\Lenovo\AppData\Local\Temp
+	USERDOMAIN=DESKTOP-Q20A2OI
+	USERDOMAIN_ROAMINGPROFILE=DESKTOP-Q20A2OI
+	USERNAME=Lenovo
+	USERPROFILE=C:\Users\Lenovo
+	VIRTUAL_ENV=C:\Users\Lenovo\venv
+	WEBIDE_VM_OPTIONS=C:\jetbra_\vmoptions\webide.vmoptions
+	WEBSTORM_VM_OPTIONS=C:\jetbra_\vmoptions\webstorm.vmoptions
+	WINDIR=C:\Windows
+	WORKON_HOME=D:\python_venv
+	ZES_ENABLE_SYSMAN=1
+	_CONDA_EXE=F:\anaconda\anaconda_new\Scripts\conda.exe
+	_CONDA_ROOT=F:\anaconda\anaconda_new
+
+pyproject.toml:
+[Errno 2] No such file or directory: 'C:\\Users\\Lenovo\\Desktop\\dwrg\\pyproject.toml'
+
+Briefcase Log:
+[17:29:22]                                                                                                                                                                new.py:545
+           Let's build a new Briefcase app!                                                                                                                               new.py:546
+                                                                                                                                                                      console.py:697
+                                                                                                                                                                      console.py:698
+           -- Formal Name ---------------------------------------------------------------                                                                             console.py:699
+                                                                                                                                                                      console.py:881
+           First, we need a formal name for your application.                                                                                                         console.py:882
+                                                                                                                                                                                    
+           This is the name that will be displayed to humans whenever the name of the                                                                                               
+           application is displayed. It can have spaces and punctuation if you like, and                                                                                            
+           any capitalization will be used as you type it.                                                                                                                          
+                                                                                                                                                                      console.py:883
+[17:29:51] Formal Name [Hello World]:                                                                                                                                     new.py:296
+           User input: dwrg                                                                                                                                               new.py:296
+                                                                                                                                                                      console.py:697
+                                                                                                                                                                      console.py:698
+           -- App Name ------------------------------------------------------------------                                                                             console.py:699
+                                                                                                                                                                      console.py:881
+           Next, we need a name that can serve as a machine-readable Python package name                                                                              console.py:882
+           for your application.                                                                                                                                                    
+                                                                                                                                                                                    
+           This name must be PEP508-compliant - that means the name may only contain                                                                                                
+           letters, numbers, hyphens and underscores; it can't contain spaces or                                                                                                    
+           punctuation, and it can't start with a hyphen or underscore.                                                                                                             
+                                                                                                                                                                                    
+           Based on your formal name, we suggest an app name of 'dwrg', but you can use                                                                                             
+           another name if you want.                                                                                                                                                
+                                                                                                                                                                      console.py:883
+[17:29:56] App Name [dwrg]:                                                                                                                                               new.py:314
+           User input: dwrg                                                                                                                                               new.py:314
+                                                                                                                                                                      console.py:697
+                                                                                                                                                                      console.py:698
+           -- Bundle Identifier ---------------------------------------------------------                                                                             console.py:699
+                                                                                                                                                                      console.py:881
+           Now we need a bundle identifier for your application.                                                                                                      console.py:882
+                                                                                                                                                                                    
+           App stores need to protect against having multiple applications with the same                                                                                            
+           name; the bundle identifier is the namespace they use to identify applications                                                                                           
+           that come from you. The bundle identifier is usually the domain name of your                                                                                             
+           company or project, in reverse order.                                                                                                                                    
+                                                                                                                                                                                    
+           For example, if you are writing an application for Example Corp, whose website                                                                                           
+           is example.com, your bundle would be 'com.example'. The bundle will be                                                                                                   
+           combined with your application's machine readable name to form a complete                                                                                                
+           application identifier (e.g., com.example.dwrg).                                                                                                                         
+                                                                                                                                                                      console.py:883
+[17:30:00] Bundle Identifier [com.example]:                                                                                                                               new.py:338
+           User input:                                                                                                                                                    new.py:338
+                                                                                                                                                                      console.py:697
+                                                                                                                                                                      console.py:698
+           -- Project Name --------------------------------------------------------------                                                                             console.py:699
+                                                                                                                                                                      console.py:881
+           Briefcase can manage projects that contain multiple applications, so we need a                                                                             console.py:882
+           Project name.                                                                                                                                                            
+                                                                                                                                                                                    
+           If you're only planning to have one application in this project, you can use                                                                                             
+           the formal name as the project name.                                                                                                                                     
+                                                                                                                                                                      console.py:883
+[17:30:01] Project Name [dwrg]:                                                                                                                                           new.py:269
+           User input:                                                                                                                                                    new.py:269
+                                                                                                                                                                      console.py:697
+                                                                                                                                                                      console.py:698
+           -- Description ---------------------------------------------------------------                                                                             console.py:699
+                                                                                                                                                                      console.py:881
+           Now, we need a one line description for your application.                                                                                                  console.py:882
+                                                                                                                                                                      console.py:883
+[17:30:02] Description [My first application]:                                                                                                                            new.py:363
+           User input:                                                                                                                                                    new.py:363
+                                                                                                                                                                      console.py:697
+                                                                                                                                                                      console.py:698
+           -- Author --------------------------------------------------------------------                                                                             console.py:699
+                                                                                                                                                                      console.py:881
+           Who do you want to be credited as the author of this application?                                                                                          console.py:882
+                                                                                                                                                                                    
+           This could be your own name, or the name of your company you work for.                                                                                                   
+                                                                                                                                                                                    
+           Based on your git configuration, we believe it could be 'buxydx'.                                                                                                        
+                                                                                                                                                                      console.py:883
+           Author [buxydx]:                                                                                                                                               new.py:383
+           User input:                                                                                                                                                    new.py:383
+                                                                                                                                                                      console.py:697
+                                                                                                                                                                      console.py:698
+           -- Author's Email ------------------------------------------------------------                                                                             console.py:699
+                                                                                                                                                                      console.py:881
+           What email address should people use to contact the developers of this                                                                                     console.py:882
+           application?                                                                                                                                                             
+                                                                                                                                                                                    
+           This might be your own email address, or a generic contact address you set up                                                                                            
+           specifically for this application.                                                                                                                                       
+                                                                                                                                                                                    
+           Based on your git configuration, we believe it could be '1123520338@qq.com'.                                                                                             
+                                                                                                                                                                      console.py:883
+[17:30:04] Author's Email [1123520338@qq.com]:                                                                                                                            new.py:406
+           User input:                                                                                                                                                    new.py:406
+                                                                                                                                                                      console.py:697
+                                                                                                                                                                      console.py:698
+           -- Application URL -----------------------------------------------------------                                                                             console.py:699
+                                                                                                                                                                      console.py:881
+           What is the website URL for this application?                                                                                                              console.py:882
+                                                                                                                                                                                    
+           If you don't have a website set up yet, you can put in a dummy URL.                                                                                                      
+                                                                                                                                                                      console.py:883
+[17:30:09] Application URL [https://example.com/dwrg]:                                                                                                                    new.py:414
+           User input:                                                                                                                                                    new.py:414
+                                                                                                                                                                      console.py:697
+                                                                                                                                                                      console.py:698
+           -- Project License -----------------------------------------------------------                                                                             console.py:699
+                                                                                                                                                                      console.py:935
+           What license do you want to use for this project's code?                                                                                                   console.py:936
+                                                                                                                                                                      console.py:937
+             1) BSD 3-Clause "New" or "Revised" License (BSD-3-Clause)                                                                                                console.py:951
+             2) MIT License (MIT)                                                                                                                                     console.py:951
+             3) Apache License 2.0 (Apache-2.0)                                                                                                                       console.py:951
+             4) GNU General Public License v2.0 only (GPL-2.0)                                                                                                        console.py:951
+             5) GNU General Public License v2.0 or later (GPL-2.0+)                                                                                                   console.py:951
+             6) GNU General Public License v3.0 only (GPL-3.0)                                                                                                        console.py:951
+             7) GNU General Public License v3.0 or later (GPL-3.0+)                                                                                                   console.py:951
+             8) Proprietary                                                                                                                                           console.py:951
+             9) Other                                                                                                                                                 console.py:951
+                                                                                                                                                                      console.py:953
+[17:30:11] Project License [1]:                                                                                                                                       console.py:956
+           User input:                                                                                                                                                console.py:956
+                                                                                                                                                                      console.py:697
+                                                                                                                                                                      console.py:698
+           -- GUI Framework -------------------------------------------------------------                                                                             console.py:699
+                                                                                                                                                                      console.py:935
+           What GUI toolkit do you want to use for this project?                                                                                                      console.py:936
+                                                                                                                                                                                    
+           Additional GUI bootstraps are available from the community.                                                                                                              
+                                                                                                                                                                                    
+           Check them out at https://beeware.org/bee/briefcase-bootstraps                                                                                                           
+                                                                                                                                                                      console.py:937
+             1) Toga                                                                                                                                                  console.py:951
+             2) PySide6 (does not support iOS/Android/Web deployment)                                                                                                 console.py:951
+             3) Pygame  (does not support iOS/Android/Web deployment)                                                                                                 console.py:951
+             4) Console (does not support iOS/Android/Web deployment)                                                                                                 console.py:951
+             5) None                                                                                                                                                  console.py:951
+                                                                                                                                                                      console.py:953
+           GUI Framework [1]:                                                                                                                                         console.py:956
+           User input:                                                                                                                                                console.py:956
+                                                                                                                                                                      console.py:697
+                                                                                                                                                                      console.py:698
+           ------------------------------------------------------------------------------                                                                             console.py:699
+                                                                                                                                                                          new.py:556
+           [dwrg] Generating a new application 'dwrg'                                                                                                                     new.py:556
+           Using app template: https://github.com/beeware/briefcase-template, branch v0.3.23                                                                            base.py:1131
+           Cloning template 'https://github.com/beeware/briefcase-template'...                                                                                           base.py:963
+[17:30:36]                                                                                                                                                            __main__.py:42
+           Unable to clone repository 'https://github.com/beeware/briefcase-template'.                                                                                __main__.py:43
+                                                                                                                                                                      __main__.py:43
+           Unable to access 'https://github.com/beeware/briefcase-template/': Failed to connect to github.com port 443 after 21357 ms: Couldn't connect to server.    __main__.py:43
+           Saving log... started                                                                                                                                      console.py:433
+
+Main thread traceback:
+╭─────────────────────────────────────────────────────────────────────── Traceback (most recent call last) ────────────────────────────────────────────────────────────────────────╮
+│ C:\Users\Lenovo\venv\Lib\site-packages\briefcase\commands\base.py:965 in update_cookiecutter_cache                                                                               │
+│                                                                                                                                                                                  │
+│    962 │   │   │   │   try:                                                                                                                                                      │
+│    963 │   │   │   │   │   self.console.info(f"Cloning template {template!r}...")                                                                                                │
+│    964 │   │   │   │   │   cached_template.mkdir(exist_ok=True, parents=True)                                                                                                    │
+│ ❱  965 │   │   │   │   │   repo = self.tools.git.Repo.clone_from(                                                                                                                │
+│    966 │   │   │   │   │   │   url=template,                                                                                                                                     │
+│    967 │   │   │   │   │   │   to_path=cached_template,                                                                                                                          │
+│    968 │   │   │   │   │   │   filter=["blob:none"],                                                                                                                             │
+│                                                                                                                                                                                  │
+│ ╭─────────────────────────────────────────────────────── locals ────────────────────────────────────────────────────────╮                                                        │
+│ │            branch = 'v0.3.23'                                                                                         │                                                        │
+│ │   cached_template = WindowsPath('C:/Users/Lenovo/AppData/Local/BeeWare/briefcase/Cache/templates/briefcase-template') │                                                        │
+│ │ git_fatal_message = ["unable to access 'https://github.com/beeware/briefcase-template/': Failed to con"+72]           │                                                        │
+│ │              hint = "Unable to access 'https://github.com/beeware/briefcase-template/': Failed to con"+71             │                                                        │
+│ │              self = <briefcase.commands.new.NewCommand object at 0x0000025F2187E610>                                  │                                                        │
+│ │          template = 'https://github.com/beeware/briefcase-template'                                                   │                                                        │
+│ ╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯                                                        │
+│                                                                                                                                                                                  │
+│ C:\Users\Lenovo\venv\Lib\site-packages\git\repo\base.py:1541 in clone_from                                                                                                       │
+│                                                                                                                                                                                  │
+│   1538 │   │   git = cls.GitCommandWrapperType(os.getcwd())                                                                                                                      │
+│   1539 │   │   if env is not None:                                                                                                                                               │
+│   1540 │   │   │   git.update_environment(**env)                                                                                                                                 │
+│ ❱ 1541 │   │   return cls._clone(                                                                                                                                                │
+│   1542 │   │   │   git,                                                                                                                                                          │
+│   1543 │   │   │   url,                                                                                                                                                          │
+│   1544 │   │   │   to_path,                                                                                                                                                      │
+│                                                                                                                                                                                  │
+│ ╭────────────────────────────────────────────────────────── locals ──────────────────────────────────────────────────────────╮                                                   │
+│ │   allow_unsafe_options = False                                                                                             │                                                   │
+│ │ allow_unsafe_protocols = False                                                                                             │                                                   │
+│ │                    env = None                                                                                              │                                                   │
+│ │                    git = <git.cmd.Git object at 0x0000025F21DE3100>                                                        │                                                   │
+│ │                 kwargs = {'filter': ['blob:none'], 'no_checkout': True}                                                    │                                                   │
+│ │          multi_options = None                                                                                              │                                                   │
+│ │               progress = None                                                                                              │                                                   │
+│ │                to_path = WindowsPath('C:/Users/Lenovo/AppData/Local/BeeWare/briefcase/Cache/templates/briefcase-template') │                                                   │
+│ │                    url = 'https://github.com/beeware/briefcase-template'                                                   │                                                   │
+│ ╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯                                                   │
+│                                                                                                                                                                                  │
+│ C:\Users\Lenovo\venv\Lib\site-packages\git\repo\base.py:1412 in _clone                                                                                                           │
+│                                                                                                                                                                                  │
+│   1409 │   │   │   cmdline = remove_password_if_present(cmdline)                                                                                                                 │
+│   1410 │   │   │                                                                                                                                                                 │
+│   1411 │   │   │   _logger.debug("Cmd(%s)'s unused stdout: %s", cmdline, stdout)                                                                                                 │
+│ ❱ 1412 │   │   │   finalize_process(proc, stderr=stderr)                                                                                                                         │
+│   1413 │   │                                                                                                                                                                     │
+│   1414 │   │   # Our git command could have a different working dir than our actual                                                                                              │
+│   1415 │   │   # environment, hence we prepend its working dir if required.                                                                                                      │
+│                                                                                                                                                                                  │
+│ ╭────────────────────────────────────────────────────────── locals ──────────────────────────────────────────────────────────╮                                                   │
+│ │   allow_unsafe_options = False                                                                                             │                                                   │
+│ │ allow_unsafe_protocols = False                                                                                             │                                                   │
+│ │             clone_path = 'C:\\Users\\Lenovo\\AppData\\Local\\BeeWare\\briefcase\\Cache\\templates\\briefcase-templa'+2     │                                                   │
+│ │                cmdline = [                                                                                                 │                                                   │
+│ │                          │   'git',                                                                                        │                                                   │
+│ │                          │   'clone',                                                                                      │                                                   │
+│ │                          │   '-v',                                                                                         │                                                   │
+│ │                          │   '--filter=blob:none',                                                                         │                                                   │
+│ │                          │   '--no-checkout',                                                                              │                                                   │
+│ │                          │   '--',                                                                                         │                                                   │
+│ │                          │   'https://github.com/beeware/briefcase-template',                                              │                                                   │
+│ │                          │   'C:\\Users\\Lenovo\\AppData\\Local\\BeeWare\\briefcase\\Cache\\templates\\briefcase-templa'+2 │                                                   │
+│ │                          ]                                                                                                 │                                                   │
+│ │                    git = <git.cmd.Git object at 0x0000025F21DE3100>                                                        │                                                   │
+│ │                 kwargs = {'filter': ['blob:none'], 'no_checkout': True}                                                    │                                                   │
+│ │                  multi = None                                                                                              │                                                   │
+│ │          multi_options = None                                                                                              │                                                   │
+│ │                   path = 'C:\\Users\\Lenovo\\AppData\\Local\\BeeWare\\briefcase\\Cache\\templates\\briefcase-templa'+2     │                                                   │
+│ │                   proc = <git.cmd.Git.AutoInterrupt object at 0x0000025F21E3E340>                                          │                                                   │
+│ │               progress = None                                                                                              │                                                   │
+│ │                sep_dir = None                                                                                              │                                                   │
+│ │                 stderr = "Cloning into 'C:\\Users\\Lenovo\\AppData\\Local\\BeeWare\\briefcase\\Cache\\templates\\br"+179   │                                                   │
+│ │                 stdout = ''                                                                                                │                                                   │
+│ │                    url = 'https://github.com/beeware/briefcase-template'                                                   │                                                   │
+│ ╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯                                                   │
+│                                                                                                                                                                                  │
+│ C:\Users\Lenovo\venv\Lib\site-packages\git\util.py:504 in finalize_process                                                                                                       │
+│                                                                                                                                                                                  │
+│    501 │   """Wait for the process (clone, fetch, pull or push) and handle its errors                                                                                            │
+│    502 │   accordingly."""                                                                                                                                                       │
+│    503 │   # TODO: No close proc-streams??                                                                                                                                       │
+│ ❱  504 │   proc.wait(**kwargs)                                                                                                                                                   │
+│    505                                                                                                                                                                           │
+│    506                                                                                                                                                                           │
+│    507 @overload                                                                                                                                                                 │
+│                                                                                                                                                                                  │
+│ ╭─────────────────────────────────────────────────────── locals ───────────────────────────────────────────────────────╮                                                         │
+│ │ kwargs = {'stderr': "Cloning into 'C:\\Users\\Lenovo\\AppData\\Local\\BeeWare\\briefcase\\Cache\\templates\\br"+179} │                                                         │
+│ │   proc = <git.cmd.Git.AutoInterrupt object at 0x0000025F21E3E340>                                                    │                                                         │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯                                                         │
+│                                                                                                                                                                                  │
+│ C:\Users\Lenovo\venv\Lib\site-packages\git\cmd.py:834 in wait                                                                                                                    │
+│                                                                                                                                                                                  │
+│    831 │   │   │   if status != 0:                                                                                                                                               │
+│    832 │   │   │   │   errstr = read_all_from_possibly_closed_stream(p_stderr)                                                                                                   │
+│    833 │   │   │   │   _logger.debug("AutoInterrupt wait stderr: %r" % (errstr,))                                                                                                │
+│ ❱  834 │   │   │   │   raise GitCommandError(remove_password_if_present(self.args), status, err                                                                                  │
+│    835 │   │   │   return status                                                                                                                                                 │
+│    836 │                                                                                                                                                                         │
+│    837 │   # END auto interrupt                                                                                                                                                  │
+│                                                                                                                                                                                  │
+│ ╭────────────────────────────────────────────────── locals ───────────────────────────────────────────────────╮                                                                  │
+│ │   errstr = b"Cloning into 'C:\\Users\\Lenovo\\AppData\\Local\\BeeWare\\briefcase\\Cache\\templates\\br"+179 │                                                                  │
+│ │ p_stderr = <_io.TextIOWrapper name=7 encoding='utf-8'>                                                      │                                                                  │
+│ │     self = <git.cmd.Git.AutoInterrupt object at 0x0000025F21E3E340>                                         │                                                                  │
+│ │   status = 128                                                                                              │                                                                  │
+│ │   stderr = "Cloning into 'C:\\Users\\Lenovo\\AppData\\Local\\BeeWare\\briefcase\\Cache\\templates\\br"+179  │                                                                  │
+│ │ stderr_b = b"Cloning into 'C:\\Users\\Lenovo\\AppData\\Local\\BeeWare\\briefcase\\Cache\\templates\\br"+179 │                                                                  │
+│ ╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────╯                                                                  │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+GitCommandError: Cmd('git') failed due to: exit code(128)
+  cmdline: git clone -v --filter=blob:none --no-checkout -- https://github.com/beeware/briefcase-template C:\Users\Lenovo\AppData\Local\BeeWare\briefcase\Cache\templates\briefcase-template
+  stderr: 'Cloning into 'C:\Users\Lenovo\AppData\Local\BeeWare\briefcase\Cache\templates\briefcase-template'...
+fatal: unable to access 'https://github.com/beeware/briefcase-template/': Failed to connect to github.com port 443 after 21357 ms: Couldn't connect to server
+'
+
+The above exception was the direct cause of the following exception:
+
+╭─────────────────────────────────────────────────────────────────────── Traceback (most recent call last) ────────────────────────────────────────────────────────────────────────╮
+│ C:\Users\Lenovo\venv\Lib\site-packages\briefcase\__main__.py:27 in main                                                                                                          │
+│                                                                                                                                                                                  │
+│   24 │   │   │   Path.cwd() / "pyproject.toml",                                                                                                                                  │
+│   25 │   │   │   overrides=overrides,                                                                                                                                            │
+│   26 │   │   )                                                                                                                                                                   │
+│ ❱ 27 │   │   command(**options)                                                                                                                                                  │
+│   28 │   except HelpText as e:                                                                                                                                                   │
+│   29 │   │   console.info()                                                                                                                                                      │
+│   30 │   │   console.info(str(e))                                                                                                                                                │
+│                                                                                                                                                                                  │
+│ ╭─────────────────────────────────────────────────────────────────────────────────── locals ───────────────────────────────────────────────────────────────────────────────────╮ │
+│ │       command = <briefcase.commands.new.NewCommand object at 0x0000025F2187E610>                                                                                             │ │
+│ │       console = <briefcase.console.Console object at 0x0000025F1DEC8850>                                                                                                     │ │
+│ │             e = BriefcaseCommandError("Unable to clone repository 'https://github.com/beeware/briefcase-template'.\n\nUnable to access                                       │ │
+│ │                 'https://github.com/beeware/briefcase-template/': Failed to connect to github.com port 443 after 21357 ms: Couldn't connect to server.")                     │ │
+│ │ extra_cmdline = []                                                                                                                                                           │ │
+│ │       options = {'template': None, 'template_branch': None, 'project_overrides': None}                                                                                       │ │
+│ │     overrides = {}                                                                                                                                                           │ │
+│ │        result = 200                                                                                                                                                          │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+│                                                                                                                                                                                  │
+│ C:\Users\Lenovo\venv\Lib\site-packages\briefcase\commands\new.py:615 in __call__                                                                                                 │
+│                                                                                                                                                                                  │
+│   612 │   │   # There are no apps, so finalize() will be a no op on app configurations.                                                                                          │
+│   613 │   │   self.finalize()                                                                                                                                                    │
+│   614 │   │                                                                                                                                                                      │
+│ ❱ 615 │   │   return self.new_app(                                                                                                                                               │
+│   616 │   │   │   template=template,                                                                                                                                             │
+│   617 │   │   │   template_branch=template_branch,                                                                                                                               │
+│   618 │   │   │   project_overrides=parse_project_overrides(project_overrides),                                                                                                  │
+│                                                                                                                                                                                  │
+│ ╭─────────────────────────────────────── locals ───────────────────────────────────────╮                                                                                         │
+│ │           options = {}                                                               │                                                                                         │
+│ │ project_overrides = None                                                             │                                                                                         │
+│ │              self = <briefcase.commands.new.NewCommand object at 0x0000025F2187E610> │                                                                                         │
+│ │          template = None                                                             │                                                                                         │
+│ │   template_branch = None                                                             │                                                                                         │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────╯                                                                                         │
+│                                                                                                                                                                                  │
+│ C:\Users\Lenovo\venv\Lib\site-packages\briefcase\commands\new.py:568 in new_app                                                                                                  │
+│                                                                                                                                                                                  │
+│   565 │   │   │   )                                                                                                                                                              │
+│   566 │   │                                                                                                                                                                      │
+│   567 │   │   # Create the project files                                                                                                                                         │
+│ ❱ 568 │   │   self.generate_template(                                                                                                                                            │
+│   569 │   │   │   template=(                                                                                                                                                     │
+│   570 │   │   │   │   template                                                                                                                                                   │
+│   571 │   │   │   │   if template                                                                                                                                                │
+│                                                                                                                                                                                  │
+│ ╭─────────────────────────────────────────── locals ────────────────────────────────────────────╮                                                                                │
+│ │         bootstrap = <briefcase.bootstraps.toga.TogaGuiBootstrap object at 0x0000025F1EB3FA50> │                                                                                │
+│ │           context = {                                                                         │                                                                                │
+│ │                     │   'formal_name': 'dwrg',                                                │                                                                                │
+│ │                     │   'app_name': 'dwrg',                                                   │                                                                                │
+│ │                     │   'class_name': 'dwrg',                                                 │                                                                                │
+│ │                     │   'module_name': 'dwrg',                                                │                                                                                │
+│ │                     │   'source_dir': 'src/dwrg',                                             │                                                                                │
+│ │                     │   'test_source_dir': 'tests',                                           │                                                                                │
+│ │                     │   'project_name': 'dwrg',                                               │                                                                                │
+│ │                     │   'description': 'My first application',                                │                                                                                │
+│ │                     │   'author': 'buxydx',                                                   │                                                                                │
+│ │                     │   'author_email': '1123520338@qq.com',                                  │                                                                                │
+│ │                     │   ... +18                                                               │                                                                                │
+│ │                     }                                                                         │                                                                                │
+│ │           options = {}                                                                        │                                                                                │
+│ │ project_overrides = {}                                                                        │                                                                                │
+│ │              self = <briefcase.commands.new.NewCommand object at 0x0000025F2187E610>          │                                                                                │
+│ │          template = None                                                                      │                                                                                │
+│ │   template_branch = None                                                                      │                                                                                │
+│ ╰───────────────────────────────────────────────────────────────────────────────────────────────╯                                                                                │
+│                                                                                                                                                                                  │
+│ C:\Users\Lenovo\venv\Lib\site-packages\briefcase\commands\base.py:1135 in generate_template                                                                                      │
+│                                                                                                                                                                                  │
+│   1132 │   │   │   │   f"Using app template: {template}, branch {template_branch}"                                                                                               │
+│   1133 │   │   │   )                                                                                                                                                             │
+│   1134 │   │   │   # Unroll the new app template                                                                                                                                 │
+│ ❱ 1135 │   │   │   self._generate_template(                                                                                                                                      │
+│   1136 │   │   │   │   template=template,                                                                                                                                        │
+│   1137 │   │   │   │   branch=template_branch,                                                                                                                                   │
+│   1138 │   │   │   │   output_path=output_path,                                                                                                                                  │
+│                                                                                                                                                                                  │
+│ ╭────────────────────────────────────── locals ──────────────────────────────────────╮                                                                                           │
+│ │          branch = None                                                             │                                                                                           │
+│ │   extra_context = {                                                                │                                                                                           │
+│ │                   │   'formal_name': 'dwrg',                                       │                                                                                           │
+│ │                   │   'app_name': 'dwrg',                                          │                                                                                           │
+│ │                   │   'class_name': 'dwrg',                                        │                                                                                           │
+│ │                   │   'module_name': 'dwrg',                                       │                                                                                           │
+│ │                   │   'source_dir': 'src/dwrg',                                    │                                                                                           │
+│ │                   │   'test_source_dir': 'tests',                                  │                                                                                           │
+│ │                   │   'project_name': 'dwrg',                                      │                                                                                           │
+│ │                   │   'description': 'My first application',                       │                                                                                           │
+│ │                   │   'author': 'buxydx',                                          │                                                                                           │
+│ │                   │   'author_email': '1123520338@qq.com',                         │                                                                                           │
+│ │                   │   ... +21                                                      │                                                                                           │
+│ │                   }                                                                │                                                                                           │
+│ │     output_path = WindowsPath('C:/Users/Lenovo/Desktop/dwrg')                      │                                                                                           │
+│ │            self = <briefcase.commands.new.NewCommand object at 0x0000025F2187E610> │                                                                                           │
+│ │        template = 'https://github.com/beeware/briefcase-template'                  │                                                                                           │
+│ │ template_branch = 'v0.3.23'                                                        │                                                                                           │
+│ │         version = <Version('0.3.23')>                                              │                                                                                           │
+│ ╰────────────────────────────────────────────────────────────────────────────────────╯                                                                                           │
+│                                                                                                                                                                                  │
+│ C:\Users\Lenovo\venv\Lib\site-packages\briefcase\commands\base.py:1072 in _generate_template                                                                                     │
+│                                                                                                                                                                                  │
+│   1069 │   │   """                                                                                                                                                               │
+│   1070 │   │   # Make sure we have an updated cookiecutter template,                                                                                                             │
+│   1071 │   │   # checked out to the right branch                                                                                                                                 │
+│ ❱ 1072 │   │   cached_template = self.update_cookiecutter_cache(                                                                                                                 │
+│   1073 │   │   │   template=template,                                                                                                                                            │
+│   1074 │   │   │   branch=branch,                                                                                                                                                │
+│   1075 │   │   )                                                                                                                                                                 │
+│                                                                                                                                                                                  │
+│ ╭───────────────────────────────────── locals ─────────────────────────────────────╮                                                                                             │
+│ │        branch = 'v0.3.23'                                                        │                                                                                             │
+│ │ extra_context = {                                                                │                                                                                             │
+│ │                 │   'formal_name': 'dwrg',                                       │                                                                                             │
+│ │                 │   'app_name': 'dwrg',                                          │                                                                                             │
+│ │                 │   'class_name': 'dwrg',                                        │                                                                                             │
+│ │                 │   'module_name': 'dwrg',                                       │                                                                                             │
+│ │                 │   'source_dir': 'src/dwrg',                                    │                                                                                             │
+│ │                 │   'test_source_dir': 'tests',                                  │                                                                                             │
+│ │                 │   'project_name': 'dwrg',                                      │                                                                                             │
+│ │                 │   'description': 'My first application',                       │                                                                                             │
+│ │                 │   'author': 'buxydx',                                          │                                                                                             │
+│ │                 │   'author_email': '1123520338@qq.com',                         │                                                                                             │
+│ │                 │   ... +21                                                      │                                                                                             │
+│ │                 }                                                                │                                                                                             │
+│ │   output_path = WindowsPath('C:/Users/Lenovo/Desktop/dwrg')                      │                                                                                             │
+│ │          self = <briefcase.commands.new.NewCommand object at 0x0000025F2187E610> │                                                                                             │
+│ │      template = 'https://github.com/beeware/briefcase-template'                  │                                                                                             │
+│ ╰──────────────────────────────────────────────────────────────────────────────────╯                                                                                             │
+│                                                                                                                                                                                  │
+│ C:\Users\Lenovo\venv\Lib\site-packages\briefcase\commands\base.py:999 in update_cookiecutter_cache                                                                               │
+│                                                                                                                                                                                  │
+│    996 │   │   │   │   │   │   │   "because the repository URL is incorrect."                                                                                                    │
+│    997 │   │   │   │   │   │   )                                                                                                                                                 │
+│    998 │   │   │   │   │                                                                                                                                                         │
+│ ❱  999 │   │   │   │   │   raise BriefcaseCommandError(                                                                                                                          │
+│   1000 │   │   │   │   │   │   f"Unable to clone repository {template!r}.\n\n{hint}"                                                                                             │
+│   1001 │   │   │   │   │   ) from e                                                                                                                                              │
+│   1002                                                                                                                                                                           │
+│                                                                                                                                                                                  │
+│ ╭─────────────────────────────────────────────────────── locals ────────────────────────────────────────────────────────╮                                                        │
+│ │            branch = 'v0.3.23'                                                                                         │                                                        │
+│ │   cached_template = WindowsPath('C:/Users/Lenovo/AppData/Local/BeeWare/briefcase/Cache/templates/briefcase-template') │                                                        │
+│ │ git_fatal_message = ["unable to access 'https://github.com/beeware/briefcase-template/': Failed to con"+72]           │                                                        │
+│ │              hint = "Unable to access 'https://github.com/beeware/briefcase-template/': Failed to con"+71             │                                                        │
+│ │              self = <briefcase.commands.new.NewCommand object at 0x0000025F2187E610>                                  │                                                        │
+│ │          template = 'https://github.com/beeware/briefcase-template'                                                   │                                                        │
+│ ╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯                                                        │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+BriefcaseCommandError: Unable to clone repository 'https://github.com/beeware/briefcase-template'.
+
+Unable to access 'https://github.com/beeware/briefcase-template/': Failed to connect to github.com port 443 after 21357 ms: Couldn't connect to server.

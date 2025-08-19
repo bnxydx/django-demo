@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第五人格 - 角色与天赋抽取</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #2c3e50, #4a69bd);
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            width: 90%;
+            max-width: 550px;
+            animation: fadeIn 0.8s ease;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .result {
+            font-size: 60px;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #feca57;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        .result:hover {
+            transform: scale(1.05);
+        }
+
+        .traits {
+            font-size: 20px;
+            color: #a29bfe;
+            margin: 10px 0 20px;
+            font-style: italic;
+        }
+
+        .btn {
+            background: #ff9ff3;
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            font-size: 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            background: #fd79a8;
+            transform: translateY(-3px);
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #dcdde1;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float 3s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
+            50% { transform: translateY(-15px) rotate(180deg); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🎲 第五人格 · 角色与天赋抽取</h1>
+        <div class="result" id="role">园丁</div>
+        <div class="traits" id="traits">（无天赋）</div>
+        <button class="btn" onclick="draw()">再抽一次</button>
+        <p class="footer">天赋规则：0个 或 2个（不出现1个）</p>
+    </div>
+
+    <!-- 动态光点 -->
+    <script>
+        function addSparkles() {
+            for (let i = 0; i < 8; i++) {
+                setTimeout(() => {
+                    const s = document.createElement('div');
+                    s.classList.add('sparkle');
+                    s.style.left = Math.random() * 100 + 'vw';
+                    s.style.top = Math.random() * 100 + 'vh';
+                    document.body.appendChild(s);
+                    setTimeout(() => s.remove(), 3000);
+                }, i * 200);
+            }
+        }
+        addSparkles();
+        setInterval(addSparkles, 6000);
+    </script>
+
+    <script>
+        // 求生者列表
+        const survivors = [
+            "幸运儿", "医生", "律师", "园丁", "魔术师", "冒险家", "佣兵", "空军",
+            "机械师", "前锋", "盲女", "祭司", "调香师", "牛仔", "舞女", "先知",
+            "入殓师", "勘探员", "咒术师", "野人", "杂技演员", "大副", "调酒师",
+            "邮差", "守墓人", "昆虫学者", "画家", "击球手", "玩具商", "病患",
+            "小说家", "哭泣小丑", "教授", "古董商", "作曲家", "记者", "飞行家",
+            "拉拉队员", "木偶师", "火灾调查员", "气象学家", "弓箭手"
+        ];
+
+        // 天赋列表
+        const traits = ["大心脏", "飞轮", "搏命", "双弹"];
+
+        // 随机抽取两个不同的天赋
+        function getRandomTwoTraits() {
+            const shuffled = [...traits].sort(() => Math.random() - 0.5);
+            return shuffled.slice(0, 2); // 取前两个
+        }
+
+        // 主抽取函数
+        function draw() {
+            // 抽取角色
+            const randomRole = survivors[Math.floor(Math.random() * survivors.length)];
+
+            // 决定是否有天赋：50% 无，50% 两个
+            const hasTraits = Math.random() < 0.5;
+            let traitText = "（无天赋）";
+
+            if (hasTraits) {
+                const twoTraits = getRandomTwoTraits();
+                traitText = `（${twoTraits[0]}, ${twoTraits[1]}）`;
+            }
+
+            // 更新页面
+            document.getElementById('role').textContent = randomRole;
+            document.getElementById('traits').textContent = traitText;
+
+            // 添加淡入动画
+            const roleEl = document.getElementById('role');
+            const traitsEl = document.getElementById('traits');
+            roleEl.style.opacity = 0;
+            traitsEl.style.opacity = 0;
+            setTimeout(() => {
+                roleEl.style.opacity = 1;
+                traitsEl.style.opacity = 1;
+            }, 100);
+        }
+
+        // 页面加载时自动抽一次
+        window.onload = draw;
+    </script>
+
+</body>
+</html>
