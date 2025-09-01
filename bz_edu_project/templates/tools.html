@@ -57,7 +57,7 @@
             color: #555;
         }
         
-        .form-group input {
+        .form-group input, .form-group select, .form-group textarea {
             width: 100%;
             padding: 12px;
             border: 2px solid #ddd;
@@ -66,9 +66,15 @@
             transition: border-color 0.3s;
         }
         
-        .form-group input:focus {
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
             outline: none;
             border-color: #667eea;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
         }
         
         .btn {
@@ -97,6 +103,9 @@
             background: #f8f9fa;
             padding: 20px;
             border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
         .tools-header h2 {
@@ -104,18 +113,70 @@
             font-size: 1.5em;
         }
         
-        .tool-item {
+        .category-filter {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .category-filter select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .tool-item-enhanced {
             padding: 20px;
             border-bottom: 1px solid #eee;
-            transition: background-color 0.3s;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            margin-bottom: 10px;
         }
         
-        .tool-item:hover {
+        .tool-item-enhanced:hover {
             background-color: #f8f9fa;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         
-        .tool-item:last-child {
+        .tool-item-enhanced:last-child {
             border-bottom: none;
+        }
+        
+        .tool-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+        
+        .tool-info {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .tool-id {
+            font-size: 0.8em;
+            color: #6c757d;
+            margin-bottom: 5px;
+        }
+        
+        .tool-category {
+            display: inline-block;
+            background: #e9ecef;
+            color: #495057;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            margin-bottom: 8px;
+        }
+        
+        .tool-description {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 8px;
+            font-style: italic;
         }
         
         .tool-name {
@@ -135,41 +196,11 @@
             text-decoration: underline;
         }
         
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: #666;
-        }
-        
-        .empty-state i {
-            font-size: 4em;
-            margin-bottom: 20px;
-            opacity: 0.3;
-        }
-        
-        .alert {
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 6px;
-            display: none;
-        }
-        
-        .alert-success {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-        
-        .alert-error {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-        
         .tool-actions {
             margin-top: 10px;
             display: flex;
             gap: 10px;
+            flex-wrap: wrap;
         }
         
         .btn-small {
@@ -208,6 +239,37 @@
             background-color: #5a6268;
         }
         
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+        }
+        
+        .empty-state i {
+            font-size: 4em;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+        
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            display: none;
+        }
+        
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .alert-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
         .modal {
             display: none;
             position: fixed;
@@ -243,41 +305,132 @@
             color: #000;
         }
         
-        .tool-item-enhanced {
+        .stats-bar {
+            background: white;
             padding: 20px;
-            border-bottom: 1px solid #eee;
-            transition: all 0.3s ease;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             border-radius: 8px;
-            margin-bottom: 10px;
         }
         
-        .tool-item-enhanced:hover {
-            background-color: #f8f9fa;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
         }
         
-        .tool-item-enhanced:last-child {
-            border-bottom: none;
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
         }
         
-        .tool-meta {
+        .management-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .management-section .add-form {
+            margin-bottom: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .management-section {
+                grid-template-columns: 1fr;
+            }
+        }
+        .main-flex {
             display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
+            gap: 30px;
         }
-        
+        .main-left {
+            flex: 3;
+            min-width: 0;
+        }
+        .main-right {
+            flex: 2;
+            min-width: 320px;
+        }
+        @media (max-width: 900px) {
+            .main-flex {
+                flex-direction: column;
+            }
+            .main-right {
+                min-width: 0;
+            }
+        }
+        .tools-list {
+            margin-bottom: 0;
+        }
+        .tool-item-enhanced {
+            background: #fff;
+            margin-bottom: 18px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
         .tool-info {
             flex: 1;
             min-width: 0;
         }
-        
-        .tool-id {
-            font-size: 0.8em;
-            color: #6c757d;
-            margin-bottom: 5px;
+        .tool-name {
+            font-size: 1.15em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 6px;
         }
+        .tool-description {
+            color: #888;
+            font-size: 0.98em;
+            margin-bottom: 6px;
+            font-style: italic;
+        }
+        .tool-url {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 0.98em;
+            word-break: break-all;
+        }
+        .tool-url:hover {
+            text-decoration: underline;
+        }
+        .tool-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-left: 24px;
+        }
+        .btn-small {
+            padding: 6px 14px;
+            font-size: 13px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn-edit { background-color: #28a745; color: white; }
+        .btn-edit:hover { background-color: #218838; }
+        .btn-delete { background-color: #dc3545; color: white; }
+        .btn-delete:hover { background-color: #c82333; }
+        .btn-copy { background-color: #6c757d; color: white; }
+        .btn-copy:hover { background-color: #5a6268; }
+        .add-form { margin-bottom: 30px; }
+        .empty-state { text-align: center; color: #666; padding: 60px 20px; }
     </style>
 </head>
 <body>
@@ -287,64 +440,136 @@
             <p>管理和访问您的常用工具链接</p>
         </div>
         
-        <!-- 添加工具表单 -->
-        <div class="add-form">
-            <h2 style="margin-bottom: 20px; color: #333;">添加新工具</h2>
-            <div class="alert alert-success" id="successAlert">
-                工具添加成功！
+        <!-- 统计信息 -->
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-number">{{ tools.count }}</div>
+                <div class="stat-label">总工具数</div>
             </div>
-            <div class="alert alert-error" id="errorAlert">
-                添加失败，请检查输入信息！
+            <div class="stat-item">
+                <div class="stat-number">{{ categories.count }}</div>
+                <div class="stat-label">工具分类</div>
             </div>
-            <form id="addToolForm">
-                <div class="form-group">
-                    <label for="toolName">工具名称：</label>
-                    <input type="text" id="toolName" name="name" placeholder="请输入工具名称" required>
-                </div>
-                <div class="form-group">
-                    <label for="toolUrl">工具链接：</label>
-                    <input type="url" id="toolUrl" name="uurl" placeholder="请输入工具链接（如：https://www.example.com）" required>
-                </div>
-                <button type="submit" class="btn">➕ 添加工具</button>
-            </form>
+            <div class="stat-item">
+                <div class="stat-number">{{ tools.count|add:0 }}</div>
+                <div class="stat-label">可用工具</div>
+            </div>
         </div>
         
-        <!-- 工具列表 -->
-        <div class="tools-list">
-            <div class="tools-header">
-                <h2>📋 工具列表</h2>
+        <div class="main-flex">
+            <!-- 左侧：工具列表 -->
+            <div class="main-left">
+                <div class="tools-list">
+                    <div class="tools-header" style="justify-content: flex-start; align-items: center;">
+                        <h2 style="margin-right: 24px;">📋 工具列表</h2>
+                        <label for="filterCategory">筛选分类：</label>
+                        <select id="filterCategory" onchange="filterTools()" style="margin-left: 8px; padding: 6px 12px; border-radius: 4px; border: 1px solid #ddd;">
+                            <option value="">全部工具</option>
+                            {% for category in categories %}
+                            <option value="{{ category.id }}">{{ category.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div id="toolsList">
+                        {% if tools %}
+                            {% for tool in tools %}
+                            <div class="tool-item-enhanced" data-id="{{ tool.id }}" data-category="{{ tool.category.id }}">
+                                <div class="tool-info">
+                                    <div class="tool-name">{{ tool.name }}</div>
+                                    <div class="tool-category" style="color:#888; font-size:0.98em; margin-bottom:4px;">分类：{{ tool.category.name }}</div>
+                                    {% if tool.description %}
+                                    <div class="tool-description">{{ tool.description }}</div>
+                                    {% endif %}
+                                    <a href="{{ tool.url }}" target="_blank" class="tool-url">🔗 {{ tool.url }}</a>
+                                </div>
+                                <div class="tool-actions">
+                                    <button class="btn-small btn-copy" onclick="copyLink('{{ tool.url }}')">📋 复制链接</button>
+                                    <button class="btn-small btn-edit" onclick="editTool(this)" data-tool-id="{{ tool.id }}" data-tool-name="{{ tool.name }}" data-tool-description="{{ tool.description|default:"" }}" data-tool-url="{{ tool.url }}" data-tool-category="{{ tool.category.id }}">✏️ 编辑</button>
+                                    <button class="btn-small btn-delete" onclick="deleteTool({{ tool.id }}, '{{ tool.name }}')">🗑️ 删除</button>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="empty-state">
+                                <div style="font-size: 4em; margin-bottom: 20px; opacity: 0.3;">📝</div>
+                                <h3>暂无工具</h3>
+                                <p>添加您的第一个工具开始使用吧！</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
-            <div id="toolsList">
-                {% if tools %}
-                    {% for tool in tools %}
-                    <div class="tool-item-enhanced" data-id="{{ tool.id }}">
-                        <div class="tool-meta">
-                            <div class="tool-info">
-                                <div class="tool-id">#{{ tool.id }}</div>
-                                <div class="tool-name">{{ tool.name }}</div>
-                                <a href="{{ tool.uurl }}" target="_blank" class="tool-url">🔗 {{ tool.uurl }}</a>
+            <!-- 右侧：添加分类和工具表单 -->
+            <div class="main-right">
+                <!-- 添加分类表单 -->
+                <div class="add-form">
+                    <h2 style="margin-bottom: 20px; color: #333;">📁 添加新分类</h2>
+                    <div class="alert alert-success" id="categorySuccessAlert">分类添加成功！</div>
+                    <div class="alert alert-error" id="categoryErrorAlert">添加失败，请检查输入信息！</div>
+                    <form id="addCategoryForm" method="POST" action="/categories/">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="categoryName">分类名称：</label>
+                            <input type="text" id="categoryName" name="name" placeholder="请输入分类名称" required>
+                        </div>
+                        <button type="submit" class="btn">📁 添加分类</button>
+                    </form>
+                    <!-- 分类列表 -->
+                    <div style="margin-top: 20px;">
+                        <h3 style="margin-bottom: 15px; color: #555;">现有分类</h3>
+                        <div id="categoriesList">
+                            {% if categories %}
+                                {% for category in categories %}
+                                <div class="category-item" data-id="{{ category.id }}">
+                                    <div class="category-info">
+                                        <span class="category-name">{{ category.name }}</span>
+                                        <span class="category-count">({{ category.tools.count }} 个工具)</span>
+                                    </div>
+                                    <div class="category-actions">
+                                        <button class="btn-small btn-edit" onclick="showEditCategoryModal({{ category.id }}, '{{ category.name }}')">✏️ 编辑</button>
+                                        <button class="btn-small btn-delete" onclick="deleteCategory({{ category.id }}, '{{ category.name }}')">🗑️ 删除</button>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            {% else %}
+                                <p style="color: #666; text-align: center;">暂无分类</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <!-- 添加工具表单 -->
+                <div class="add-form">
+                    <h2 style="margin-bottom: 20px; color: #333;">🛠️ 添加新工具</h2>
+                    <div class="alert alert-success" id="successAlert">工具添加成功！</div>
+                    <div class="alert alert-error" id="errorAlert">添加失败，请检查输入信息！</div>
+                    <form id="addToolForm" method="POST">
+                        {% csrf_token %}
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="toolName">工具名称：</label>
+                                <input type="text" id="toolName" name="name" placeholder="请输入工具名称" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="toolCategory">工具分类：</label>
+                                <select id="toolCategory" name="category" required>
+                                    <option value="">请选择分类</option>
+                                    {% for category in categories %}
+                                    <option value="{{ category.id }}">{{ category.name }}</option>
+                                    {% endfor %}
+                                </select>
                             </div>
                         </div>
-                        <div class="tool-actions">
-                            <button class="btn-small btn-copy" onclick="copyLink('{{ tool.uurl }}')">
-                                📋 复制链接
-                            </button>
-                            <button class="btn-small btn-edit" onclick="editTool({{ tool.id }}, '{{ tool.name }}', '{{ tool.uurl }}')">
-                                ✏️ 编辑
-                            </button>
-                            <button class="btn-small btn-delete" onclick="deleteTool({{ tool.id }}, '{{ tool.name }}')">
-                                🗑️ 删除
-                            </button>
+                        <div class="form-group">
+                            <label for="toolDescription">工具描述：</label>
+                            <textarea id="toolDescription" name="description" placeholder="请输入工具描述（可选）" rows="3"></textarea>
                         </div>
-                    </div>
-                    {% endfor %}
-                {% else %}
-                    <div class="empty-state">
-                        <div style="font-size: 4em; margin-bottom: 20px; opacity: 0.3;">📝</div>
-                        <h3>暂无工具</h3>
-                        <p>添加您的第一个工具开始使用吧！</p>
-                    </div>
-                {% endif %}
+                        <div class="form-group">
+                            <label for="toolUrl">工具链接：</label>
+                            <input type="url" id="toolUrl" name="url" placeholder="请输入工具链接（如：https://www.example.com）" required>
+                        </div>
+                        <button type="submit" class="btn">➕ 添加工具</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -362,13 +587,27 @@
             </div>
             <form id="editToolForm">
                 <input type="hidden" id="editToolId">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editToolName">工具名称：</label>
+                        <input type="text" id="editToolName" name="name" placeholder="请输入工具名称" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editToolCategory">工具分类：</label>
+                        <select id="editToolCategory" name="category" required>
+                            {% for category in categories %}
+                            <option value="{{ category.id }}">{{ category.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
                 <div class="form-group">
-                    <label for="editToolName">工具名称：</label>
-                    <input type="text" id="editToolName" name="name" placeholder="请输入工具名称" required>
+                    <label for="editToolDescription">工具描述：</label>
+                    <textarea id="editToolDescription" name="description" placeholder="请输入工具描述（可选）" rows="3"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="editToolUrl">工具链接：</label>
-                    <input type="url" id="editToolUrl" name="uurl" placeholder="请输入工具链接" required>
+                    <input type="url" id="editToolUrl" name="url" placeholder="请输入工具链接" required>
                 </div>
                 <div style="text-align: right; margin-top: 20px;">
                     <button type="button" class="btn" style="background: #6c757d; margin-right: 10px;" onclick="closeEditModal()">
@@ -399,23 +638,35 @@
         </div>
     </div>
 
+    <!-- 编辑分类模态框 -->
+    <div id="editCategoryModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeEditCategoryModal()">&times;</span>
+            <h2 style="margin-bottom: 20px; color: #333;">编辑分类</h2>
+            <div class="alert alert-success" id="editCategorySuccessAlert">分类更新成功！</div>
+            <div class="alert alert-error" id="editCategoryErrorAlert">更新失败，请检查输入信息！</div>
+            <form id="editCategoryForm">
+                <input type="hidden" id="editCategoryId">
+                <div class="form-group">
+                    <label for="editCategoryName">分类名称：</label>
+                    <input type="text" id="editCategoryName" name="name" placeholder="请输入分类名称" required>
+                </div>
+                <div style="text-align: right; margin-top: 20px;">
+                    <button type="button" class="btn" style="background: #6c757d; margin-right: 10px;" onclick="closeEditCategoryModal()">取消</button>
+                    <button type="submit" class="btn">💾 保存更改</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script>
-        document.getElementById('addToolForm').addEventListener('submit', async function(e) {
+        // 分类表单提交处理
+        document.getElementById('addCategoryForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            
             const formData = new FormData(this);
-            const data = {
-                name: formData.get('name'),
-                uurl: formData.get('uurl')
-            };
-            
-            // 添加协议前缀如果没有的话
-            if (data.uurl && !data.uurl.startsWith('http://') && !data.uurl.startsWith('https://')) {
-                data.uurl = 'https://' + data.uurl;
-            }
-            
+            const data = { name: formData.get('name') };
             try {
-                const response = await fetch('/tools/', {
+                const response = await fetch('/categories/', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -423,49 +674,106 @@
                     },
                     body: JSON.stringify(data)
                 });
-                
                 if (response.ok) {
-                    // 显示成功消息
-                    document.getElementById('successAlert').style.display = 'block';
-                    document.getElementById('errorAlert').style.display = 'none';
-                    
-                    // 清空表单
+                    document.getElementById('categorySuccessAlert').style.display = 'block';
+                    document.getElementById('categoryErrorAlert').style.display = 'none';
                     this.reset();
-                    
-                    // 3秒后刷新页面
-                    setTimeout(() => {
-                        window.location.reload();
-                    }, 1500);
+                    setTimeout(() => { window.location.reload(); }, 1500);
                 } else {
-                    throw new Error('添加失败');
+                    throw new Error('添加分类失败');
                 }
             } catch (error) {
-                document.getElementById('errorAlert').style.display = 'block';
-                document.getElementById('successAlert').style.display = 'none';
+                document.getElementById('categoryErrorAlert').style.display = 'block';
+                document.getElementById('categorySuccessAlert').style.display = 'none';
             }
         });
-        
-        // 获取CSRF token的函数
-        function getCookie(name) {
-            let cookieValue = null;
-            if (document.cookie && document.cookie !== '') {
-                const cookies = document.cookie.split(';');
-                for (let i = 0; i < cookies.length; i++) {
-                    const cookie = cookies[i].trim();
-                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                        break;
-                    }
+
+        // 显示编辑分类模态框
+        function showEditCategoryModal(id, name) {
+            document.getElementById('editCategoryId').value = id;
+            document.getElementById('editCategoryName').value = name;
+            document.getElementById('editCategoryModal').style.display = 'block';
+            document.getElementById('editCategorySuccessAlert').style.display = 'none';
+            document.getElementById('editCategoryErrorAlert').style.display = 'none';
+        }
+        function closeEditCategoryModal() {
+            document.getElementById('editCategoryModal').style.display = 'none';
+        }
+        // 编辑分类表单提交
+        document.getElementById('editCategoryForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const id = document.getElementById('editCategoryId').value;
+            const name = document.getElementById('editCategoryName').value;
+            try {
+                const response = await fetch(`/categories/${id}/`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCookie('csrftoken')
+                    },
+                    body: JSON.stringify({ name })
+                });
+                if (response.ok) {
+                    document.getElementById('editCategorySuccessAlert').style.display = 'block';
+                    document.getElementById('editCategoryErrorAlert').style.display = 'none';
+                    setTimeout(() => { window.location.reload(); }, 1000);
+                } else {
+                    throw new Error('更新失败');
                 }
+            } catch (error) {
+                document.getElementById('editCategoryErrorAlert').style.display = 'block';
+                document.getElementById('editCategorySuccessAlert').style.display = 'none';
             }
-            return cookieValue;
+        });
+        // 删除分类
+        async function deleteCategory(id, name) {
+            if (!confirm(`确定要删除分类 "${name}" 吗？此操作不可撤销。`)) return;
+            try {
+                const response = await fetch(`/categories/${id}/`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCookie('csrftoken')
+                    }
+                });
+                if (response.ok) {
+                    showNotification('分类删除成功！', 'success');
+                    setTimeout(() => { window.location.reload(); }, 1000);
+                } else {
+                    throw new Error('删除失败');
+                }
+            } catch (error) {
+                showNotification('删除失败，请重试！', 'error');
+            }
+        }
+        
+        // 筛选工具功能
+        function filterTools() {
+            const categoryId = document.getElementById('filterCategory').value;
+            const toolItems = document.querySelectorAll('.tool-item-enhanced');
+            
+            toolItems.forEach(item => {
+                if (!categoryId || item.dataset.category === categoryId) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
         }
 
         // 编辑工具功能
-        function editTool(id, name, url) {
-            document.getElementById('editToolId').value = id;
-            document.getElementById('editToolName').value = name;
-            document.getElementById('editToolUrl').value = url;
+        function editTool(button) {
+            const toolId = button.dataset.toolId;
+            const toolName = button.dataset.toolName;
+            const toolDescription = button.dataset.toolDescription;
+            const toolUrl = button.dataset.toolUrl;
+            const toolCategory = button.dataset.toolCategory;
+            
+            document.getElementById('editToolId').value = toolId;
+            document.getElementById('editToolName').value = toolName;
+            document.getElementById('editToolDescription').value = toolDescription || '';
+            document.getElementById('editToolUrl').value = toolUrl;
+            document.getElementById('editToolCategory').value = toolCategory;
             document.getElementById('editModal').style.display = 'block';
             document.getElementById('editSuccessAlert').style.display = 'none';
             document.getElementById('editErrorAlert').style.display = 'none';
@@ -584,12 +892,14 @@
             const formData = new FormData(this);
             const data = {
                 name: formData.get('name'),
-                uurl: formData.get('uurl')
+                description: formData.get('description'),
+                url: formData.get('url'),
+                category: formData.get('category')
             };
             
             // 添加协议前缀如果没有的话
-            if (data.uurl && !data.uurl.startsWith('http://') && !data.uurl.startsWith('https://')) {
-                data.uurl = 'https://' + data.uurl;
+            if (data.url && !data.url.startsWith('http://') && !data.url.startsWith('https://')) {
+                data.url = 'https://' + data.url;
             }
             
             try {
@@ -610,18 +920,37 @@
                     const toolElement = document.querySelector(`[data-id="${toolId}"]`);
                     if (toolElement) {
                         toolElement.querySelector('.tool-name').textContent = data.name;
-                        const linkElement = toolElement.querySelector('.tool-url');
-                        linkElement.href = data.uurl;
-                        linkElement.textContent = `🔗 ${data.uurl}`;
+                        toolElement.querySelector('.tool-url').href = data.url;
+                        toolElement.querySelector('.tool-url').textContent = `🔗 ${data.url}`;
+                        
+                        // 更新分类显示
+                        const categorySelect = document.getElementById('editToolCategory');
+                        const selectedOption = categorySelect.options[categorySelect.selectedIndex];
+                        toolElement.querySelector('.tool-category').textContent = selectedOption.text;
+                        
+                        // 更新描述显示
+                        const descriptionElement = toolElement.querySelector('.tool-description');
+                        if (data.description) {
+                            if (descriptionElement) {
+                                descriptionElement.textContent = data.description;
+                            } else {
+                                const newDescription = document.createElement('div');
+                                newDescription.className = 'tool-description';
+                                newDescription.textContent = data.description;
+                                toolElement.querySelector('.tool-info').insertBefore(newDescription, toolElement.querySelector('.tool-name'));
+                            }
+                        } else if (descriptionElement) {
+                            descriptionElement.remove();
+                        }
                         
                         // 更新按钮的onclick属性
                         const editBtn = toolElement.querySelector('.btn-edit');
                         const deleteBtn = toolElement.querySelector('.btn-delete');
                         const copyBtn = toolElement.querySelector('.btn-copy');
                         
-                        editBtn.onclick = () => editTool(toolId, data.name, data.uurl);
+                        editBtn.onclick = () => editTool(toolId, data.name, data.description, data.url, data.category);
                         deleteBtn.onclick = () => deleteTool(toolId, data.name);
-                        copyBtn.onclick = () => copyLink(data.uurl);
+                        copyBtn.onclick = () => copyLink(data.url);
                     }
                     
                     setTimeout(() => {
@@ -641,12 +970,16 @@
         window.onclick = function(event) {
             const editModal = document.getElementById('editModal');
             const deleteModal = document.getElementById('deleteModal');
+            const editCategoryModal = document.getElementById('editCategoryModal');
             
             if (event.target === editModal) {
                 closeEditModal();
             }
             if (event.target === deleteModal) {
                 closeDeleteModal();
+            }
+            if (event.target === editCategoryModal) {
+                closeEditCategoryModal();
             }
         };
 
@@ -655,6 +988,7 @@
             closeBtn.onclick = function() {
                 closeEditModal();
                 closeDeleteModal();
+                closeEditCategoryModal();
             };
         });
 
@@ -674,6 +1008,22 @@
             }
         `;
         document.head.appendChild(style);
+        
+        // 获取CSRF token的函数
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
     </script>
 </body>
 </html>

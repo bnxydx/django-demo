@@ -1,0 +1,5 @@
+### 多对一
+GET http://localhost:8000/api/students/
+
+### 一查多
+GET http://localhost:8000/api/course/1/

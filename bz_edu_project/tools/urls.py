@@ -1,6 +1,9 @@
 from django.urls import path
-from .views import ToolsView
+from .views import FarToolCategoryView,FarToolCategoryNumView,ToolListCreateView,ToolRetrieveUpdateDestroyView
+
 urlpatterns = [
-    path("tools/", ToolsView.as_view()),
-    path("tools/<int:pk>/", ToolsView.as_view()),
+    path('categories/', FarToolCategoryView.as_view()),
+    path('categories/<int:pk>/', FarToolCategoryNumView.as_view()),
+    path('tools/', ToolListCreateView.as_view()),
+    path('tools/<int:pk>/', ToolRetrieveUpdateDestroyView.as_view()),
 ]

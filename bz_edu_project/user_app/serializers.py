@@ -19,7 +19,6 @@ class RegisterSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError('手机号已经注册')
         except User.DoesNotExist:
             return value
-        return value
 
     class Meta:
         model = User
