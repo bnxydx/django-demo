@@ -43,8 +43,6 @@ class FarToolCategoryNumView(APIView):
         return Response({'msg': '删除成功'}, status=204)
 
 
-
-
 class ToolListCreateView(generics.ListCreateAPIView):
     queryset = Tool.objects.all()
     serializer_class = ToolSerializer

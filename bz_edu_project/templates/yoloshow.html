@@ -121,6 +121,7 @@
 
                 <div class="actions">
                     <a href="/yolo/" class="btn">返回上传</a>
+                    <button class="btn" style="margin-left: 10px;" onclick="sendMail()">发送邮件</button>
                 </div>
             {% else %}
                 <p class="no-result">❌ 未找到预测图像，请重新上传图片</p>
@@ -128,10 +129,29 @@
                     <a href="/yolo/" class="btn">重新上传</a>
                 </div>
             {% endif %}
+            <script>
+            async function sendMail() {
+                try {
+                    const res = await fetch('/yolo/send-email/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': (function getCookie(name){let v=null;if(document.cookie&&document.cookie!==''){const arr=document.cookie.split(';');for(let i=0;i<arr.length;i++){const c=arr[i].trim();if(c.substring(0,name.length+1)===(name+'=')){v=decodeURIComponent(c.substring(name.length+1));break;}}}return v;})('csrftoken')
+                        },
+                        body: JSON.stringify({ score: '{{ score|default:"" }}' })
+                    });
+                    if (!res.ok) throw new Error('发送失败');
+                    alert('邮件已发送');
+                } catch (e) {
+                    alert('发送失败，请稍后重试');
+                }
+            }
+            </script>
+            
         </main>
 
         <footer>
-            Powered by YOLOv8 + Django
+            Powered by YOLOv11 + Django
         </footer>
     </div>
 
