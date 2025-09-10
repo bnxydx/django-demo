@@ -1,0 +1,48 @@
+### 测试工具总类
+GET http://localhost:8000/FarTool/
+### 测试工具总类2
+GET http://localhost:8000/FarTool/2/
+
+### 测试工具总类
+POST http://localhost:8000/FarTool/
+Content-Type: application/json
+
+{
+    "name":"test3"
+
+}
+### put
+PUT http://localhost:8000/FarTool/1/
+Content-Type: application/json
+
+{
+    "name":"new"
+
+}
+
+### delete
+DELETE http://localhost:8000/FarTool/3/
+
+
+
+### 测试工具类
+GET http://localhost:8000/tools/
+
+### 测试
+POST http://localhost:8000/tools/
+Content-Type: application/json
+
+{
+    "name": "测试",
+    "uurl": "www.baidu.com"
+
+}
+
+### 测试
+DELETE http://localhost:8000/tools/1/
+Content-Type: application/json
+
+{
+  "id":1
+}
+

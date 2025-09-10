@@ -1,0 +1,9 @@
+### 获取课程分类列表
+POST http://localhost:8000/Translate/
+Content-Type: application/json
+
+{
+    "test": "hello"
+
+}
+
