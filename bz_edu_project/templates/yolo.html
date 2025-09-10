@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOLO 图片上传</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #4a5568;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        p {
+            color: #718096;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        label {
+            font-size: 16px;
+            color: #4a5568;
+            margin-bottom: 4px;
+        }
+
+        input[type="file"] {
+            padding: 10px;
+            border: 2px dashed #cbd5e0;
+            border-radius: 8px;
+            background-color: #f7fafc;
+            font-size: 14px;
+            color: #4a5568;
+        }
+
+        input[type="file"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        input[type="submit"] {
+            background-color: #667eea;
+            color: white;
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #5a67d8;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #a0aec0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div style="margin-bottom: 20px;">
+            <a href="/" style="color: #667eea; text-decoration: none; font-size: 16px;">
+                ← 返回首页
+            </a>
+        </div>
+        <h2>YOLO 图片上传</h2>
+        <p>上传一张图片进行目标检测</p>
+
+        <form action="/yolo/" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="img">选择图片</label>
+            <input type="file" name="img" id="img" accept="image/*" required>
+            <input type="submit" value="开始检测">
+        </form>
+
+        <div class="footer">
+            支持 JPG、PNG 等常见格式
+        </div>
+    </div>
+</body>
+</html>
