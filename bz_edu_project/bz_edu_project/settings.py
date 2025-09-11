@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "dwrg",
     "tools",
     "TranslateApp",
+    "clientapp",
 ]
 
 MIDDLEWARE = [

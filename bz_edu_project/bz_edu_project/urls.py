@@ -15,7 +15,7 @@ urlpatterns = [
     path("",include('dwrg.urls')),
     path("",include('tools.urls')),
     path("", include('TranslateApp.urls')),
-
+    path("clientapp/", include('clientapp.urls')),
 ]
 
 

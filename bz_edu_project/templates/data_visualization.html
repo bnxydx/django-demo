@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>环境数据可视化</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/date-fns@2.29.2/index.min.js"></script>
+    <style>
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin-bottom: 30px;
+        }
+        .date-picker-container {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        .data-summary {
+            background-color: #e9ecef;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .metric-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+        .metric-value {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        .metric-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid py-4">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center mb-4">环境数据可视化监控</h1>
+            </div>
+        </div>
+
+        <!-- 时间选择器 -->
+        <div class="row">
+            <div class="col-12">
+                <div class="date-picker-container">
+                    <h4>选择时间范围</h4>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="startDateTime" class="form-label">开始时间</label>
+                            <input type="datetime-local" class="form-control" id="startDateTime">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="endDateTime" class="form-label">结束时间</label>
+                            <input type="datetime-local" class="form-control" id="endDateTime">
+                        </div>
+                        <div class="col-md-4 d-flex align-items-end">
+                            <button type="button" class="btn btn-primary me-2" onclick="loadData()">查询数据</button>
+                            <button type="button" class="btn btn-secondary me-2" onclick="setLast24Hours()">最近24小时</button>
+                            <button type="button" class="btn btn-outline-secondary" onclick="setLastWeek()">最近一周</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 数据概览 -->
+        <div class="row" id="dataSummary" style="display: none;">
+            <div class="col-md-4">
+                <div class="metric-card text-center">
+                    <div class="metric-value" id="avgTemperature">--</div>
+                    <div class="metric-label">平均温度 (°C)</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="metric-card text-center">
+                    <div class="metric-value" id="avgHumidity">--</div>
+                    <div class="metric-label">平均湿度 (%)</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="metric-card text-center">
+                    <div class="metric-value" id="avgCO2">--</div>
+                    <div class="metric-label">平均CO2浓度 (ppm)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 图表区域 -->
+        <div class="row">
+            <div class="col-12">
+                <div class="chart-container">
+                    <canvas id="environmentChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- 数据表格 -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>数据详情</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped" id="dataTable">
+                                <thead>
+                                    <tr>
+                                        <th>时间</th>
+                                        <th>温度 (°C)</th>
+                                        <th>湿度 (%)</th>
+                                        <th>CO2浓度 (ppm)</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="dataTableBody">
+                                    <tr>
+                                        <td colspan="4" class="text-center">请选择时间范围并查询数据</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let chart = null;
+        
+        // 初始化页面
+        document.addEventListener('DOMContentLoaded', function() {
+            // 设置默认时间为最近24小时
+            setLast24Hours();
+            // 初始化图表
+            initChart();
+        });
+
+        // 设置最近24小时
+        function setLast24Hours() {
+            const now = new Date();
+            const yesterday = new Date(now.getTime() - 24 * 60 * 60 * 1000);
+            
+            document.getElementById('startDateTime').value = formatDateTimeLocal(yesterday);
+            document.getElementById('endDateTime').value = formatDateTimeLocal(now);
+        }
+
+        // 设置最近一周
+        function setLastWeek() {
+            const now = new Date();
+            const weekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+            
+            document.getElementById('startDateTime').value = formatDateTimeLocal(weekAgo);
+            document.getElementById('endDateTime').value = formatDateTimeLocal(now);
+        }
+
+        // 格式化日期时间为datetime-local输入格式
+        function formatDateTimeLocal(date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            
+            return `${year}-${month}-${day}T${hours}:${minutes}`;
+        }
+
+        // 初始化图表
+        function initChart() {
+            const ctx = document.getElementById('environmentChart').getContext('2d');
+            chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [
+                        {
+                            label: '温度 (°C)',
+                            data: [],
+                            borderColor: 'rgb(255, 99, 132)',
+                            backgroundColor: 'rgba(255, 99, 132, 0.1)',
+                            yAxisID: 'y',
+                        },
+                        {
+                            label: '湿度 (%)',
+                            data: [],
+                            borderColor: 'rgb(54, 162, 235)',
+                            backgroundColor: 'rgba(54, 162, 235, 0.1)',
+                            yAxisID: 'y1',
+                        },
+                        {
+                            label: 'CO2浓度 (ppm)',
+                            data: [],
+                            borderColor: 'rgb(75, 192, 192)',
+                            backgroundColor: 'rgba(75, 192, 192, 0.1)',
+                            yAxisID: 'y2',
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    stacked: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '环境数据趋势图'
+                        },
+                        legend: {
+                            position: 'top',
+                        }
+                    },
+                    scales: {
+                        x: {
+                            display: true,
+                            title: {
+                                display: true,
+                                text: '时间'
+                            }
+                        },
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: {
+                                display: true,
+                                text: '温度 (°C)'
+                            },
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: {
+                                display: true,
+                                text: '湿度 (%)'
+                            },
+                            grid: {
+                                drawOnChartArea: false,
+                            },
+                        },
+                        y2: {
+                            type: 'linear',
+                            display: false,
+                            position: 'right',
+                            title: {
+                                display: true,
+                                text: 'CO2浓度 (ppm)'
+                            },
+                        }
+                    }
+                },
+            });
+        }
+
+        // 加载数据
+        async function loadData() {
+            const startDateTime = document.getElementById('startDateTime').value;
+            const endDateTime = document.getElementById('endDateTime').value;
+
+            if (!startDateTime || !endDateTime) {
+                alert('请选择开始和结束时间');
+                return;
+            }
+
+            if (new Date(startDateTime) >= new Date(endDateTime)) {
+                alert('开始时间必须早于结束时间');
+                return;
+            }
+
+            try {
+                // 显示加载状态
+                showLoading();
+
+                // 构建API请求URL
+                const startFormatted = startDateTime.replace('T', ' ') + ':00';
+                const endFormatted = endDateTime.replace('T', ' ') + ':00';
+                const apiUrl = `/clientapp/list/?start=${encodeURIComponent(startFormatted)}&end=${encodeURIComponent(endFormatted)}`;
+
+                const response = await fetch(apiUrl);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                
+                // 更新图表和表格
+                updateChart(data);
+                updateTable(data);
+                updateSummary(data);
+                
+                // 显示数据概览
+                document.getElementById('dataSummary').style.display = 'block';
+
+            } catch (error) {
+                console.error('Error loading data:', error);
+                alert('加载数据失败: ' + error.message);
+            } finally {
+                hideLoading();
+            }
+        }
+
+        // 显示加载状态
+        function showLoading() {
+            document.getElementById('dataTableBody').innerHTML = '<tr><td colspan="4" class="text-center"><div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div> 加载中...</td></tr>';
+        }
+
+        // 隐藏加载状态
+        function hideLoading() {
+            // Loading state will be replaced by actual data
+        }
+
+        // 更新图表
+        function updateChart(data) {
+            const labels = [];
+            const temperatures = [];
+            const humidities = [];
+            const co2s = [];
+
+            data.forEach(item => {
+                labels.push(formatDateTime(item.time));
+                temperatures.push(parseFloat(item.temperature) || 0);
+                humidities.push(parseFloat(item.damp) || 0);
+                co2s.push(parseFloat(item.co2) || 0);
+            });
+
+            chart.data.labels = labels;
+            chart.data.datasets[0].data = temperatures;
+            chart.data.datasets[1].data = humidities;
+            chart.data.datasets[2].data = co2s;
+            chart.update();
+        }
+
+        // 更新表格
+        function updateTable(data) {
+            const tbody = document.getElementById('dataTableBody');
+            tbody.innerHTML = '';
+
+            if (data.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="4" class="text-center">没有找到数据</td></tr>';
+                return;
+            }
+
+            data.forEach(item => {
+                const row = tbody.insertRow();
+                row.insertCell(0).textContent = formatDateTime(item.time);
+                row.insertCell(1).textContent = item.temperature || '--';
+                row.insertCell(2).textContent = item.damp || '--';
+                row.insertCell(3).textContent = item.co2 || '--';
+            });
+        }
+
+        // 更新数据概览
+        function updateSummary(data) {
+            if (data.length === 0) {
+                document.getElementById('avgTemperature').textContent = '--';
+                document.getElementById('avgHumidity').textContent = '--';
+                document.getElementById('avgCO2').textContent = '--';
+                return;
+            }
+
+            const temps = data.filter(item => item.temperature).map(item => parseFloat(item.temperature));
+            const humids = data.filter(item => item.damp).map(item => parseFloat(item.damp));
+            const co2s = data.filter(item => item.co2).map(item => parseFloat(item.co2));
+
+            const avgTemp = temps.length > 0 ? (temps.reduce((a, b) => a + b, 0) / temps.length).toFixed(1) : '--';
+            const avgHumid = humids.length > 0 ? (humids.reduce((a, b) => a + b, 0) / humids.length).toFixed(1) : '--';
+            const avgCO2 = co2s.length > 0 ? (co2s.reduce((a, b) => a + b, 0) / co2s.length).toFixed(0) : '--';
+
+            document.getElementById('avgTemperature').textContent = avgTemp;
+            document.getElementById('avgHumidity').textContent = avgHumid;
+            document.getElementById('avgCO2').textContent = avgCO2;
+        }
+
+        // 格式化日期时间显示
+        function formatDateTime(dateTimeString) {
+            const date = new Date(dateTimeString);
+            return date.toLocaleString('zh-CN', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+        }
+    </script>
+</body>
+</html>
