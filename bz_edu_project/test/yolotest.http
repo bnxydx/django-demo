@@ -1,0 +1,2 @@
+### 获取课程分类列表
+GET http://localhost:8000/yolohistory/

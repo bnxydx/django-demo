@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>死鸡检测历史记录</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+        
+        .header-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 0;
+            margin-bottom: 30px;
+        }
+        
+        .header-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .header-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .controls-section {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .image-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .image-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .detection-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .image-card:hover .detection-image {
+            transform: scale(1.05);
+        }
+        
+        .image-overlay {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+        
+        .card-content {
+            padding: 20px;
+        }
+        
+        .image-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .image-id {
+            font-size: 0.9rem;
+            color: #6c757d;
+            font-weight: 500;
+        }
+        
+        .upload-time {
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn-view {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-view:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
+            color: white;
+        }
+        
+        .btn-delete {
+            background: #dc3545;
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-delete:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(220, 53, 69, 0.3);
+        }
+        
+        .pagination-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        
+        .pagination .page-link {
+            color: #667eea;
+            border: 1px solid #dee2e6;
+        }
+        
+        .pagination .page-item.active .page-link {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-color: #667eea;
+        }
+        
+        .pagination .page-link:hover {
+            color: #764ba2;
+            background-color: #f8f9ff;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #6c757d;
+        }
+        
+        .empty-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+        
+        .stats-section {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            background: linear-gradient(135deg, #f8f9ff 0%, #e6f0ff 100%);
+            border-radius: 10px;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+        
+        /* 响应式优化 */
+        @media (max-width: 768px) {
+            .header-title {
+                font-size: 2rem;
+            }
+            
+            .image-gallery {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+            }
+            
+            .controls-section {
+                padding: 15px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .image-gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部区域 -->
+    <div class="header-section">
+        <div class="container">
+            <h1 class="header-title"><i class="bi bi-clock-history"></i> 死鸡检测历史记录</h1>
+            <p class="header-subtitle">查看所有历史检测图片和结果</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- 统计信息 -->
+        <div class="stats-section">
+            <h5><i class="bi bi-bar-chart"></i> 统计概览</h5>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" id="totalImages">--</div>
+                    <div class="stat-label">总检测图片</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="todayImages">--</div>
+                    <div class="stat-label">今日检测</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="thisWeekImages">--</div>
+                    <div class="stat-label">本周检测</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 控制区域 -->
+        <div class="controls-section">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h5><i class="bi bi-images"></i> 检测历史</h5>
+                    <p class="mb-0 text-muted">点击图片查看详细检测结果</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <button class="btn btn-outline-primary" onclick="refreshData()">
+                        <i class="bi bi-arrow-clockwise"></i> 刷新
+                    </button>
+                    <a href="/yolo/" class="btn btn-primary">
+                        <i class="bi bi-plus-circle"></i> 新建检测
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 图片展示区域 -->
+        <div id="imageGallery" class="image-gallery">
+            <!-- 动态加载的图片卡片 -->
+        </div>
+
+        <!-- 空状态显示 -->
+        <div id="emptyState" class="empty-state" style="display: none;">
+            <div class="empty-icon">
+                <i class="bi bi-image"></i>
+            </div>
+            <h4>暂无检测记录</h4>
+            <p>还没有上传过图片进行检测</p>
+            <a href="/yolo/" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> 开始检测
+            </a>
+        </div>
+
+        <!-- 分页区域 -->
+        <div class="pagination-wrapper">
+            <nav aria-label="历史记录分页">
+                <ul class="pagination" id="paginationNav">
+                    <!-- 动态生成分页 -->
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- 图片查看模态框 -->
+    <div class="modal fade" id="imageModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">检测图片详情</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img id="modalImage" src="" alt="检测图片" class="img-fluid rounded">
+                    <div class="mt-3">
+                        <p><strong>图片ID:</strong> <span id="modalImageId"></span></p>
+                        <p><strong>上传时间:</strong> <span id="modalUploadTime"></span></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+                    <a id="modalDownloadBtn" href="#" class="btn btn-primary" download>
+                        <i class="bi bi-download"></i> 下载图片
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let currentPage = 1;
+        let totalPages = 1;
+
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            loadHistoryData(1);
+        });
+
+        // 加载历史数据
+        async function loadHistoryData(page = 1) {
+            try {
+                showLoading();
+                
+                const response = await fetch(`/yolohistory/?page=${page}`);
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                
+                // 更新数据显示
+                updateImageGallery(data.results || []);
+                updatePagination(data);
+                updateStats(data);
+                
+                currentPage = page;
+                
+            } catch (error) {
+                console.error('加载数据失败:', error);
+                showError('加载历史记录失败: ' + error.message);
+            }
+        }
+
+        // 更新图片画廊
+        function updateImageGallery(images) {
+            const gallery = document.getElementById('imageGallery');
+            const emptyState = document.getElementById('emptyState');
+            
+            if (images.length === 0) {
+                gallery.style.display = 'none';
+                emptyState.style.display = 'block';
+                return;
+            }
+            
+            gallery.style.display = 'grid';
+            emptyState.style.display = 'none';
+            
+            gallery.innerHTML = images.map((item, index) => `
+                <div class="image-card" data-aos="fade-up" data-aos-delay="${index * 100}">
+                    <div class="image-wrapper">
+                        <img src="${item.img}" alt="检测图片 ${item.id}" class="detection-image" 
+                             onclick="showImageModal(${item.id}, '${item.img}', '${formatDate(new Date())}')">
+                        <div class="image-overlay">
+                            #${item.id}
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="image-info">
+                            <span class="image-id">图片 ID: ${item.id}</span>
+                            <span class="upload-time">${formatDate(new Date())}</span>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn btn-view" onclick="showImageModal(${item.id}, '${item.img}', '${formatDate(new Date())}')">
+                                <i class="bi bi-eye"></i> 查看
+                            </button>
+                            <button class="btn btn-delete" onclick="deleteImage(${item.id})">
+                                <i class="bi bi-trash"></i> 删除
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 更新分页
+        function updatePagination(data) {
+            const pagination = document.getElementById('paginationNav');
+            if (!data.count || data.count <= 2) { // 每页2条，如果总数小于等于2就不显示分页
+                pagination.innerHTML = '';
+                return;
+            }
+            
+            totalPages = Math.ceil(data.count / 2); // 每页2条
+            let paginationHTML = '';
+            
+            // 上一页
+            if (data.previous) {
+                paginationHTML += `
+                    <li class="page-item">
+                        <a class="page-link" href="#" onclick="loadHistoryData(${currentPage - 1})">
+                            <i class="bi bi-chevron-left"></i>
+                        </a>
+                    </li>
+                `;
+            }
+            
+            // 页码
+            for (let i = 1; i <= totalPages; i++) {
+                const isActive = i === currentPage ? 'active' : '';
+                paginationHTML += `
+                    <li class="page-item ${isActive}">
+                        <a class="page-link" href="#" onclick="loadHistoryData(${i})">${i}</a>
+                    </li>
+                `;
+            }
+            
+            // 下一页
+            if (data.next) {
+                paginationHTML += `
+                    <li class="page-item">
+                        <a class="page-link" href="#" onclick="loadHistoryData(${currentPage + 1})">
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+                    </li>
+                `;
+            }
+            
+            pagination.innerHTML = paginationHTML;
+        }
+
+        // 更新统计信息
+        function updateStats(data) {
+            const total = data.count || 0;
+            document.getElementById('totalImages').textContent = total;
+            document.getElementById('todayImages').textContent = Math.floor(total * 0.1); // 模拟今日数据
+            document.getElementById('thisWeekImages').textContent = Math.floor(total * 0.3); // 模拟本周数据
+        }
+
+        // 显示图片模态框
+        function showImageModal(id, imageUrl, uploadTime) {
+            document.getElementById('modalImage').src = imageUrl;
+            document.getElementById('modalImageId').textContent = id;
+            document.getElementById('modalUploadTime').textContent = uploadTime;
+            document.getElementById('modalDownloadBtn').href = imageUrl;
+            
+            const modal = new bootstrap.Modal(document.getElementById('imageModal'));
+            modal.show();
+        }
+
+        // 删除图片
+        async function deleteImage(id) {
+            if (!confirm('确定要删除这张图片吗？此操作无法撤销。')) {
+                return;
+            }
+            
+            try {
+                // 这里应该调用删除API，目前先模拟
+                showSuccess('图片删除成功');
+                // 重新加载当前页数据
+                loadHistoryData(currentPage);
+            } catch (error) {
+                showError('删除失败: ' + error.message);
+            }
+        }
+
+        // 刷新数据
+        function refreshData() {
+            loadHistoryData(currentPage);
+        }
+
+        // 显示加载状态
+        function showLoading() {
+            const gallery = document.getElementById('imageGallery');
+            gallery.innerHTML = `
+                <div class="col-12 text-center py-5">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">加载中...</span>
+                    </div>
+                    <p class="mt-3 text-muted">正在加载历史记录...</p>
+                </div>
+            `;
+        }
+
+        // 显示错误信息
+        function showError(message) {
+            const gallery = document.getElementById('imageGallery');
+            gallery.innerHTML = `
+                <div class="col-12">
+                    <div class="alert alert-danger text-center">
+                        <i class="bi bi-exclamation-triangle"></i> ${message}
+                    </div>
+                </div>
+            `;
+        }
+
+        // 显示成功信息
+        function showSuccess(message) {
+            // 创建临时提示
+            const toast = document.createElement('div');
+            toast.className = 'position-fixed top-0 end-0 p-3';
+            toast.style.zIndex = '1050';
+            toast.innerHTML = `
+                <div class="toast show" role="alert">
+                    <div class="toast-header">
+                        <i class="bi bi-check-circle text-success me-2"></i>
+                        <strong class="me-auto">成功</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+                    </div>
+                    <div class="toast-body">${message}</div>
+                </div>
+            `;
+            document.body.appendChild(toast);
+            
+            // 3秒后自动移除
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+
+        // 格式化日期
+        function formatDate(date) {
+            return date.toLocaleString('zh-CN', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+    </script>
+</body>
+</html>

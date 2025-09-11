@@ -28,17 +28,80 @@
         .metric-card {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 15px;
+            border-radius: 8px;
+            padding: 15px 10px;
+            margin-bottom: 10px;
+            transition: transform 0.2s ease;
+        }
+        .metric-card:hover {
+            transform: translateY(-2px);
         }
         .metric-value {
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: bold;
+            margin-bottom: 5px;
         }
         .metric-label {
-            font-size: 0.9rem;
-            opacity: 0.8;
+            font-size: 0.8rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+        
+        /* 数据概览区域样式 */
+        #dataSummary {
+            padding: 0 20px;
+            margin-bottom: 30px;
+        }
+        
+        .metric-cards-container {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .metric-card-wrapper {
+            flex: 1;
+            max-width: 280px;
+            min-width: 200px;
+        }
+        
+        /* 响应式优化 */
+        @media (max-width: 768px) {
+            .metric-cards-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .metric-card-wrapper {
+                max-width: 100%;
+                min-width: auto;
+            }
+            
+            .metric-card {
+                padding: 12px 8px;
+                margin-bottom: 8px;
+            }
+            .metric-value {
+                font-size: 1.3rem;
+            }
+            .metric-label {
+                font-size: 0.75rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .metric-card {
+                padding: 10px 6px;
+            }
+            .metric-value {
+                font-size: 1.2rem;
+            }
+            .metric-label {
+                font-size: 0.7rem;
+            }
         }
     </style>
 </head>
@@ -75,23 +138,25 @@
         </div>
 
         <!-- 数据概览 -->
-        <div class="row" id="dataSummary" style="display: none;">
-            <div class="col-md-4">
-                <div class="metric-card text-center">
-                    <div class="metric-value" id="avgTemperature">--</div>
-                    <div class="metric-label">平均温度 (°C)</div>
+        <div id="dataSummary" style="display: none;">
+            <div class="metric-cards-container">
+                <div class="metric-card-wrapper">
+                    <div class="metric-card text-center">
+                        <div class="metric-value" id="avgTemperature">--</div>
+                        <div class="metric-label">平均温度 (°C)</div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="metric-card text-center">
-                    <div class="metric-value" id="avgHumidity">--</div>
-                    <div class="metric-label">平均湿度 (%)</div>
+                <div class="metric-card-wrapper">
+                    <div class="metric-card text-center">
+                        <div class="metric-value" id="avgHumidity">--</div>
+                        <div class="metric-label">平均湿度 (%)</div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="metric-card text-center">
-                    <div class="metric-value" id="avgCO2">--</div>
-                    <div class="metric-label">平均CO2浓度 (ppm)</div>
+                <div class="metric-card-wrapper">
+                    <div class="metric-card text-center">
+                        <div class="metric-value" id="avgCO2">--</div>
+                        <div class="metric-label">平均CO2浓度 (ppm)</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -388,17 +453,12 @@
             document.getElementById('avgCO2').textContent = avgCO2;
         }
 
-        // 格式化日期时间显示
+        // 格式化日期时间显示 - 直接使用后端返回的字符串
         function formatDateTime(dateTimeString) {
-            const date = new Date(dateTimeString);
-            return date.toLocaleString('zh-CN', {
-                year: 'numeric',
-                month: '2-digit',
-                day: '2-digit',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit'
-            });
+            if (!dateTimeString) return '--';
+            
+            // 后端已经返回格式化的字符串，直接使用
+            return dateTimeString.toString();
         }
     </script>
 </body>

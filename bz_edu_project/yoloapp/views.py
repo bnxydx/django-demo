@@ -1,18 +1,22 @@
 import os
 from pathlib import Path
 from django.shortcuts import render
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.views import APIView
+from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 
 from bz_edu_project import settings
 from .models import YoloModels
 from ultralytics import YOLO
 from .utils.SendEmail import send_email
-class YoloListView(APIView):
-    def get(self,request):
-        return render(request,'yolo.html')
 
-    def post(self,request):
+
+class YoloListView(APIView):
+    def get(self, request):
+        return render(request, 'yolo.html')
+
+    def post(self, request):
         u = YoloModels()
         u.img = request.FILES.get('img')
 
@@ -45,7 +49,7 @@ class YoloListView(APIView):
             img_txt = '.' + img_txt[:-3] + 'txt'
             print(img_txt)
             num = 0
-            with open(img_txt,'r') as f:
+            with open(img_txt, 'r') as f:
                 s = f.readline()
                 l = s.split()
                 num = l[-1]
@@ -69,7 +73,28 @@ class SendEmailView(APIView):
         if not score:
             return Response({"message": "缺少分数参数"}, status=400)
         try:
-            send_email(score,Qnum)
+            send_email(score, Qnum)
             return Response({"message": "邮件已发送"}, status=200)
         except Exception as exc:
             return Response({"message": f"发送失败: {exc}"}, status=500)
+
+
+class LargeResultsSetPagiation(PageNumberPagination):
+    page_size = 2  # 默认每页显示多少条数据
+    max_page_size = 10  # 前端在控制每页显示多少条时，最多不能超过10
+    page_query_param = 'page'  # 前端在查询字符串的关键字 指定显示第几页的名字，不指定默认时page
+
+
+from .serializer import YoloSerializers
+
+
+class HistoryDataView(ListAPIView):
+    queryset = YoloModels.objects.all()
+    serializer_class = YoloSerializers
+    pagination_class = LargeResultsSetPagiation
+
+
+class YoloHistoryPageView(APIView):
+    """YOLO历史记录页面视图"""
+    def get(self, request):
+        return render(request, 'yolo_history.html')

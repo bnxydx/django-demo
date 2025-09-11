@@ -438,6 +438,9 @@
                 <a href="/yolo/" class="nav-item">
                     <i>🔍</i>YOLO死鸡检测
                 </a>
+                <a href="/yolo/history/" class="nav-item">
+                    <i>📋</i>检测历史记录
+                </a>
                 <a href="/dwrg/" class="nav-item">
                     <i>🔒</i>私用检测接口
                 </a>
@@ -493,8 +496,8 @@
                     <i>📚</i>课程管理
                 </a>
             </div>
-        </div>
-        
+            </div>
+
         <div class="nav-group">
             <div class="nav-group-title" onclick="toggleNavGroup(this)">ℹ️ 系统信息</div>
             <div class="nav-group-content">
@@ -553,50 +556,50 @@
                     <div class="feature-title">数据上传管理</div>
                     <div class="feature-description">支持单条数据录入和CSV批量上传，便捷的数据管理</div>
                     <a href="/clientapp/upload/" class="feature-btn">上传数据</a>
-                </div>
             </div>
+        </div>
             
             <!-- 翻译工具区域 -->
-            <div class="translate-section">
-                <h2 class="translate-title">🔄 智能翻译工具</h2>
-                <div class="translate-container">
-                    <div class="input-section">
-                        <div class="section-title">输入文本</div>
-                        <textarea 
-                            id="translateInput" 
-                            class="translate-input" 
-                            placeholder="请输入要翻译的文本..."
-                            maxlength="5000"
-                        ></textarea>
-                        <div style="text-align: right; font-size: 12px; color: #7f8c8d; margin-top: 5px;">
-                            <span id="charCount">0</span>/5000
-                        </div>
-                    </div>
-                    <div class="output-section">
-                        <div class="section-title">翻译结果</div>
-                        <textarea 
-                            id="translateOutput" 
-                            class="translate-output" 
-                            placeholder="翻译结果将显示在这里..."
-                            readonly
-                        ></textarea>
+        <div class="translate-section">
+            <h2 class="translate-title">🔄 智能翻译工具</h2>
+            <div class="translate-container">
+                <div class="input-section">
+                    <div class="section-title">输入文本</div>
+                    <textarea 
+                        id="translateInput" 
+                        class="translate-input" 
+                        placeholder="请输入要翻译的文本..."
+                        maxlength="5000"
+                    ></textarea>
+                    <div style="text-align: right; font-size: 12px; color: #7f8c8d; margin-top: 5px;">
+                        <span id="charCount">0</span>/5000
                     </div>
                 </div>
-                <button id="translateBtn" class="translate-button">
-                    🔄 开始翻译
-                </button>
-                <div id="loading" class="loading">
-                    <span>翻译中，请稍候...</span>
+                <div class="output-section">
+                    <div class="section-title">翻译结果</div>
+                    <textarea 
+                        id="translateOutput" 
+                        class="translate-output" 
+                        placeholder="翻译结果将显示在这里..."
+                        readonly
+                    ></textarea>
                 </div>
-                <div id="errorMessage" class="error-message"></div>
             </div>
+            <button id="translateBtn" class="translate-button">
+                🔄 开始翻译
+            </button>
+            <div id="loading" class="loading">
+                <span>翻译中，请稍候...</span>
+            </div>
+            <div id="errorMessage" class="error-message"></div>
+        </div>
         </div>
         
         <!-- 底部信息 -->
         <div class="footer">
             <p>💀 305死鸡检测系统 | 内网穿透服务已启用 | 集成环境监控与数据分析</p>
         </div>
-    </div>
+        </div>
 
     <!-- JavaScript代码 -->
     <script>

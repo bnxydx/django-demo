@@ -5,7 +5,7 @@ from .models import ClientModel
 from .serializers import ClientSerializers
 from rest_framework.generics import RetrieveUpdateDestroyAPIView
 from django.shortcuts import render
-
+import pytz
 
 # Create your views here.
 
@@ -30,7 +30,7 @@ class ClientListView(ListAPIView):
         if start:
             try:
                 start_dt = datetime.strptime(start, '%Y-%m-%d %H:%M:%S')
-                start_dt = timezone.make_aware(start_dt)  # 转为带时区的时间
+                # 简单处理：假设传入的时间就是本地时间，直接使用
                 queryset = queryset.filter(time__gte=start_dt)
             except ValueError:
                 pass
@@ -38,7 +38,7 @@ class ClientListView(ListAPIView):
         if end:
             try:
                 end_dt = datetime.strptime(end, '%Y-%m-%d %H:%M:%S')
-                end_dt = timezone.make_aware(end_dt)
+                # 简单处理：假设传入的时间就是本地时间，直接使用
                 queryset = queryset.filter(time__lte=end_dt)
             except ValueError:
                 pass
