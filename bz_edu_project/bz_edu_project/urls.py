@@ -16,6 +16,7 @@ urlpatterns = [
     path("",include('tools.urls')),
     path("", include('TranslateApp.urls')),
     path("clientapp/", include('clientapp.urls')),
+    path("weatherapp/",include('WeatherApp.urls')),
 ]
 
 

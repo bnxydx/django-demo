@@ -1,0 +1,23 @@
+### test
+POST http://localhost:8000/weatherapp/weather/
+Content-Type: application/json
+
+{
+  "text": "北京"
+
+}
+
+### test
+
+POST http://localhost:8000/weatherapp/weatherSub/
+Content-Type: application/json
+
+{
+  "Qnum":"2155079979",
+  "City":"石家庄"
+
+}
+
+### test
+
+GET http://localhost:8000/weatherapp/weatherSend/

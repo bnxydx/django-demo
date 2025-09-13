@@ -80,7 +80,7 @@ class SendEmailView(APIView):
 
 
 class LargeResultsSetPagiation(PageNumberPagination):
-    page_size = 2  # 默认每页显示多少条数据
+    page_size = 4  # 默认每页显示多少条数据
     max_page_size = 10  # 前端在控制每页显示多少条时，最多不能超过10
     page_query_param = 'page'  # 前端在查询字符串的关键字 指定显示第几页的名字，不指定默认时page
 

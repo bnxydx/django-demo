@@ -11,27 +11,27 @@
             background-color: #f8f9fa;
             font-family: 'Microsoft YaHei', sans-serif;
         }
-        
+
         .header-section {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             padding: 40px 0;
             margin-bottom: 30px;
         }
-        
+
         .header-title {
             font-size: 2.5rem;
             font-weight: bold;
             text-align: center;
             margin-bottom: 10px;
         }
-        
+
         .header-subtitle {
             text-align: center;
             font-size: 1.1rem;
             opacity: 0.9;
         }
-        
+
         .controls-section {
             background: white;
             padding: 20px;
@@ -39,14 +39,14 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             margin-bottom: 30px;
         }
-        
+
         .image-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 25px;
             margin-bottom: 30px;
         }
-        
+
         .image-card {
             background: white;
             border-radius: 15px;
@@ -54,30 +54,30 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        
+
         .image-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
-        
+
         .image-wrapper {
             position: relative;
             width: 100%;
             height: 250px;
             overflow: hidden;
         }
-        
+
         .detection-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.3s ease;
         }
-        
+
         .image-card:hover .detection-image {
             transform: scale(1.05);
         }
-        
+
         .image-overlay {
             position: absolute;
             top: 10px;
@@ -88,34 +88,34 @@
             border-radius: 15px;
             font-size: 0.8rem;
         }
-        
+
         .card-content {
             padding: 20px;
         }
-        
+
         .image-info {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 15px;
         }
-        
+
         .image-id {
             font-size: 0.9rem;
             color: #6c757d;
             font-weight: 500;
         }
-        
+
         .upload-time {
             font-size: 0.85rem;
             color: #6c757d;
         }
-        
+
         .action-buttons {
             display: flex;
             gap: 10px;
         }
-        
+
         .btn-view {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border: none;
@@ -125,13 +125,13 @@
             font-size: 0.9rem;
             transition: all 0.3s ease;
         }
-        
+
         .btn-view:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
             color: white;
         }
-        
+
         .btn-delete {
             background: #dc3545;
             border: none;
@@ -141,46 +141,46 @@
             font-size: 0.9rem;
             transition: all 0.3s ease;
         }
-        
+
         .btn-delete:hover {
             background: #c82333;
             transform: translateY(-2px);
             box-shadow: 0 4px 10px rgba(220, 53, 69, 0.3);
         }
-        
+
         .pagination-wrapper {
             display: flex;
             justify-content: center;
             margin-top: 40px;
         }
-        
+
         .pagination .page-link {
             color: #667eea;
             border: 1px solid #dee2e6;
         }
-        
+
         .pagination .page-item.active .page-link {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-color: #667eea;
         }
-        
+
         .pagination .page-link:hover {
             color: #764ba2;
             background-color: #f8f9ff;
         }
-        
+
         .empty-state {
             text-align: center;
             padding: 60px 20px;
             color: #6c757d;
         }
-        
+
         .empty-icon {
             font-size: 4rem;
             margin-bottom: 20px;
             opacity: 0.5;
         }
-        
+
         .stats-section {
             background: white;
             padding: 20px;
@@ -188,57 +188,57 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             margin-bottom: 30px;
         }
-        
+
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
         }
-        
+
         .stat-item {
             text-align: center;
             padding: 15px;
             background: linear-gradient(135deg, #f8f9ff 0%, #e6f0ff 100%);
             border-radius: 10px;
         }
-        
+
         .stat-number {
             font-size: 2rem;
             font-weight: bold;
             color: #667eea;
             margin-bottom: 5px;
         }
-        
+
         .stat-label {
             font-size: 0.9rem;
             color: #6c757d;
         }
-        
+
         /* 响应式优化 */
         @media (max-width: 768px) {
             .header-title {
                 font-size: 2rem;
             }
-            
+
             .image-gallery {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
                 gap: 20px;
             }
-            
+
             .controls-section {
                 padding: 15px;
             }
-            
+
             .action-buttons {
                 flex-direction: column;
             }
         }
-        
+
         @media (max-width: 576px) {
             .image-gallery {
                 grid-template-columns: 1fr;
             }
-            
+
             .stats-grid {
                 grid-template-columns: 1fr;
             }
@@ -358,21 +358,21 @@
         async function loadHistoryData(page = 1) {
             try {
                 showLoading();
-                
+
                 const response = await fetch(`/yolohistory/?page=${page}`);
                 if (!response.ok) {
                     throw new Error(`HTTP ${response.status}: ${response.statusText}`);
                 }
-                
+
                 const data = await response.json();
-                
+
                 // 更新数据显示
                 updateImageGallery(data.results || []);
                 updatePagination(data);
                 updateStats(data);
-                
+
                 currentPage = page;
-                
+
             } catch (error) {
                 console.error('加载数据失败:', error);
                 showError('加载历史记录失败: ' + error.message);
@@ -383,41 +383,58 @@
         function updateImageGallery(images) {
             const gallery = document.getElementById('imageGallery');
             const emptyState = document.getElementById('emptyState');
-            
+
             if (images.length === 0) {
                 gallery.style.display = 'none';
                 emptyState.style.display = 'block';
                 return;
             }
-            
+
             gallery.style.display = 'grid';
             emptyState.style.display = 'none';
-            
-            gallery.innerHTML = images.map((item, index) => `
+
+            gallery.innerHTML = images.map((item, index) => {
+                // 优先显示预测图，如果没有则显示原图
+                const displayImage = item.predicted_image_url || item.original_image_url || item.img;
+                const originalImage = item.original_image_url || item.img;
+                const predictedImage = item.predicted_image_url;
+                
+                return `
                 <div class="image-card" data-aos="fade-up" data-aos-delay="${index * 100}">
                     <div class="image-wrapper">
-                        <img src="${item.img}" alt="检测图片 ${item.id}" class="detection-image" 
-                             onclick="showImageModal(${item.id}, '${item.img}', '${formatDate(new Date())}')">
+                        <img src="${displayImage}" alt="检测图片 ${item.id}" class="detection-image"
+                             onclick="showImageModal(${item.id}, '${originalImage}', '${predictedImage}', '${formatDate(new Date())}')">
                         <div class="image-overlay">
                             #${item.id}
                         </div>
                     </div>
                     <div class="card-content">
                         <div class="image-info">
-                            <span class="image-id">图片 ID: ${item.id}</span>
+                            <span class="image-id">检测记录 ID: ${item.id}</span>
                             <span class="upload-time">${formatDate(new Date())}</span>
                         </div>
+                        <div class="status-info">
+                            <span class="status-badge ${predictedImage ? 'status-detected' : 'status-uploaded'}">
+                                ${predictedImage ? '✓ 已检测' : '○ 仅上传'}
+                            </span>
+                        </div>
                         <div class="action-buttons">
-                            <button class="btn btn-view" onclick="showImageModal(${item.id}, '${item.img}', '${formatDate(new Date())}')">
+                            <button class="btn btn-view" onclick="showImageModal(${item.id}, '${originalImage}', '${predictedImage}', '${formatDate(new Date())}')">
                                 <i class="bi bi-eye"></i> 查看
                             </button>
-                            <button class="btn btn-delete" onclick="deleteImage(${item.id})">
-                                <i class="bi bi-trash"></i> 删除
-                            </button>
+                            <a href="${originalImage}" class="btn btn-download" download="original_${item.id}.jpg">
+                                <i class="bi bi-download"></i> 原图
+                            </a>
+                            ${predictedImage ? 
+                                `<a href="${predictedImage}" class="btn btn-download-predicted" download="predicted_${item.id}.jpg">
+                                    <i class="bi bi-download"></i> 检测图
+                                </a>` : ''
+                            }
                         </div>
                     </div>
                 </div>
-            `).join('');
+                `;
+            }).join('');
         }
 
         // 更新分页
@@ -427,10 +444,10 @@
                 pagination.innerHTML = '';
                 return;
             }
-            
+
             totalPages = Math.ceil(data.count / 2); // 每页2条
             let paginationHTML = '';
-            
+
             // 上一页
             if (data.previous) {
                 paginationHTML += `
@@ -441,7 +458,7 @@
                     </li>
                 `;
             }
-            
+
             // 页码
             for (let i = 1; i <= totalPages; i++) {
                 const isActive = i === currentPage ? 'active' : '';
@@ -451,7 +468,7 @@
                     </li>
                 `;
             }
-            
+
             // 下一页
             if (data.next) {
                 paginationHTML += `
@@ -462,7 +479,7 @@
                     </li>
                 `;
             }
-            
+
             pagination.innerHTML = paginationHTML;
         }
 
@@ -475,11 +492,59 @@
         }
 
         // 显示图片模态框
-        function showImageModal(id, imageUrl, uploadTime) {
-            document.getElementById('modalImage').src = imageUrl;
-            document.getElementById('modalImageId').textContent = id;
-            document.getElementById('modalUploadTime').textContent = uploadTime;
-            document.getElementById('modalDownloadBtn').href = imageUrl;
+        function showImageModal(id, originalImageUrl, predictedImageUrl, uploadTime) {
+            const modalImage = document.getElementById('modalImage');
+            const modalImageId = document.getElementById('modalImageId');
+            const modalUploadTime = document.getElementById('modalUploadTime');
+            const modalDownloadBtn = document.getElementById('modalDownloadBtn');
+            
+            // 优先显示预测图
+            const displayImage = predictedImageUrl || originalImageUrl;
+            modalImage.src = displayImage;
+            modalImageId.textContent = id;
+            modalUploadTime.textContent = uploadTime;
+            modalDownloadBtn.href = originalImageUrl;
+            
+            // 如果有预测图，修改模态框内容显示两张图
+            const modalBody = document.querySelector('#imageModal .modal-body');
+            if (predictedImageUrl) {
+                modalBody.innerHTML = `
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                            <h6>原始图片</h6>
+                            <img src="${originalImageUrl}" alt="原始图片" class="img-fluid rounded mb-2" style="max-height: 300px;">
+                            <br>
+                            <a href="${originalImageUrl}" class="btn btn-sm btn-outline-success" download="original_${id}.jpg">
+                                <i class="bi bi-download"></i> 下载原图
+                            </a>
+                        </div>
+                        <div class="col-md-6 text-center">
+                            <h6>检测结果</h6>
+                            <img src="${predictedImageUrl}" alt="检测结果" class="img-fluid rounded mb-2" style="max-height: 300px;">
+                            <br>
+                            <a href="${predictedImageUrl}" class="btn btn-sm btn-outline-warning" download="predicted_${id}.jpg">
+                                <i class="bi bi-download"></i> 下载检测图
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mt-3 text-start">
+                        <p><strong>图片ID：</strong>${id}</p>
+                        <p><strong>检测时间：</strong>${uploadTime}</p>
+                        <p><strong>检测状态：</strong><span class="badge bg-success">检测完成</span></p>
+                    </div>
+                `;
+            } else {
+                modalBody.innerHTML = `
+                    <div class="text-center">
+                        <img src="${originalImageUrl}" alt="原始图片" class="img-fluid rounded" style="max-height: 400px;">
+                    </div>
+                    <div class="mt-3 text-start">
+                        <p><strong>图片ID：</strong>${id}</p>
+                        <p><strong>上传时间：</strong>${uploadTime}</p>
+                        <p><strong>检测状态：</strong><span class="badge bg-warning">仅上传，未检测</span></p>
+                    </div>
+                `;
+            }
             
             const modal = new bootstrap.Modal(document.getElementById('imageModal'));
             modal.show();
@@ -490,7 +555,7 @@
             if (!confirm('确定要删除这张图片吗？此操作无法撤销。')) {
                 return;
             }
-            
+
             try {
                 // 这里应该调用删除API，目前先模拟
                 showSuccess('图片删除成功');
@@ -548,7 +613,7 @@
                 </div>
             `;
             document.body.appendChild(toast);
-            
+
             // 3秒后自动移除
             setTimeout(() => {
                 toast.remove();
